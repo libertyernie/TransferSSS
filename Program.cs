@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using BrawlLib.Wii.Textures;
 using BrawlLib.IO;
 
-namespace Test {
+namespace TransferSSS {
 	class Program {
 		static void Main(string[] args) {
 			const int prevbaseBrres_width = 88;
