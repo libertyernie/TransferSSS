@@ -20,6 +20,8 @@ namespace TransferSSS {
 			ResourceNode fromBrres_file = NodeFactory.FromFile(null, "custom.brres");
 			ResourceNode toBrres_tex = toBrres_file.FindChild("Textures(NW4R)", false);
 			ResourceNode fromBrres_tex = fromBrres_file.FindChild("Textures(NW4R)", false);
+			ResourceNode toBrres_pal = toBrres_file.FindChild("Palettes(NW4R)", false);
+			ResourceNode fromBrres_pal = fromBrres_file.FindChild("Palettes(NW4R)", false);
 
 			//TODO check both source and dest for menselchrmark vs seriesicon (4 cases)
 			bool toBrres_usesSeriesIcon = (toBrres_tex.FindChild("SeriesIcon.01", false) != null);
@@ -78,7 +80,11 @@ namespace TransferSSS {
 				}
 				#endregion
 
-			}
+				#region MenSelmapIcon (direct copy, texture and palette)
+				copyTexture(fromBrres_pal, "MenSelmapIcon." + num, toBrres_pal, "MenSelmapIcon." + num);
+				copyTexture(fromBrres_tex, "MenSelmapIcon." + num, toBrres_tex, "MenSelmapIcon." + num);
+				#endregion
+				}
 
 			#region MenSelchrMark (original mapping) --> SeriesIcon (my new common5)
 			if (toBrres_usesSeriesIcon) {
@@ -114,11 +120,11 @@ namespace TransferSSS {
 		}
 
 		private static void copyTexture(ResourceNode parent_from, string child_from, ResourceNode parent_to, string child_to) {
-			TEX0Node from = parent_from.FindChild(child_from, false) as TEX0Node;
+			ResourceNode from = parent_from.FindChild(child_from, false);
 /*			TEX0Node to = fromBrres_tex.FindChild((
 				fromBrres_usesSeriesIcon ? name_SeriesIcon : name_MenSelchrMark
 				), false) as TEX0Node;*/
-			TEX0Node to = parent_to.FindChild(child_to, false) as TEX0Node;
+			ResourceNode to = parent_to.FindChild(child_to, false);
 			DataSource from_source = from.OriginalSource;
 			to.ReplaceRaw(from_source.Address, from_source.Length);
 			Console.WriteLine(child_from + " --> " + child_to);
