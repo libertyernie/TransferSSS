@@ -3,6 +3,7 @@ using System.Drawing;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Textures;
 using BrawlLib.IO;
+using System.Windows.Forms;
 
 namespace TransferSSS {
 	class Program {
@@ -116,6 +117,21 @@ namespace TransferSSS {
 				}
 			}
 			#endregion
+
+			#region Copy 3D models
+			/*ResourceNode toBrres_mdl = toBrres_file.FindChild("3DModels(NW4R)", false);
+			ResourceNode fromBrres_mdl = fromBrres_file.FindChild("3DModels(NW4R)", false);
+			foreach (ResourceNode from in fromBrres_mdl.Children) {
+				if (from.Name != "MenSelmapPos") {
+					ResourceNode to = toBrres_mdl.FindChild(from.Name, false);
+					if (to == null) {
+						MessageBox.Show("No " + from.Name + " model in destination");
+					} else {
+						copyTexture(from, to);
+					}
+				}
+			}*/
+			#endregion
 			toBrres_file.Export("out.brres");
 		}
 
@@ -125,9 +141,19 @@ namespace TransferSSS {
 				fromBrres_usesSeriesIcon ? name_SeriesIcon : name_MenSelchrMark
 				), false) as TEX0Node;*/
 			ResourceNode to = parent_to.FindChild(child_to, false);
+			if (from == null) {
+				MessageBox.Show("No " + child_from + " in source");
+			} else if (to == null) {
+				MessageBox.Show("No " + child_to + " in destination");
+			} else {
+				copyTexture(from, to);
+			}
+		}
+
+		private static void copyTexture(ResourceNode from, ResourceNode to) {
 			DataSource from_source = from.OriginalSource;
 			to.ReplaceRaw(from_source.Address, from_source.Length);
-			Console.WriteLine(child_from + " --> " + child_to);
+			Console.WriteLine(from.Name + " --> " + to.Name);
 		}
 
 		private static int firstIndexOf(int[] array, int search) {
