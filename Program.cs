@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
 using BrawlLib.Wii.Textures;
 using BrawlLib.IO;
 
@@ -20,10 +16,10 @@ namespace TransferSSS {
 											  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 											  3, 5, 2, 10, 6, 1, 7, 9, 4, 8};
 
-			ResourceNode toBrres = NodeFactory.FromFile(null, "MiscData[80].brres");
-			ResourceNode fromBrres = NodeFactory.FromFile(null, "custom.brres");
-			ResourceNode toBrres_tex = toBrres.FindChild("Textures(NW4R)", false);
-			ResourceNode fromBrres_tex = fromBrres.FindChild("Textures(NW4R)", false);
+			ResourceNode toBrres_file = NodeFactory.FromFile(null, "MiscData[80].brres");
+			ResourceNode fromBrres_file = NodeFactory.FromFile(null, "custom.brres");
+			ResourceNode toBrres_tex = toBrres_file.FindChild("Textures(NW4R)", false);
+			ResourceNode fromBrres_tex = fromBrres_file.FindChild("Textures(NW4R)", false);
 
 			//TODO check both source and dest for menselchrmark vs seriesicon (4 cases)
 			bool toBrres_usesSeriesIcon = (toBrres_tex.FindChild("SeriesIcon.01", false) != null);
@@ -31,25 +27,25 @@ namespace TransferSSS {
 
 			CMPR cmpr_converter = TextureConverter.Get(WiiPixelFormat.CMPR) as CMPR;
 			TextureConverter i4_converter = TextureConverter.Get(WiiPixelFormat.I4);
-			for (int i = 1; i < 60; i++ ) if (i <= 31 || i >= 50) {
+			for (int i = 1; i < 60; i++) if (i <= 31 || i >= 50) { // Copy 1-31 and 50-59, the original Brawl stages.
 				string num = i.ToString("00");
 
 				#region MenSelmapPrevbase (resize to 88x88)
 				TEX0Node fromBrres_prevbase = fromBrres_tex.FindChild("MenSelmapPrevbase." + num, false) as TEX0Node;
 				TEX0Node toBrres_prevbase = toBrres_tex.FindChild("MenSelmapPrevbase." + num, false) as TEX0Node;
-				if (fromBrres_prevbase.Width <= 88 && fromBrres_prevbase.Height <= 88) {
-					Console.WriteLine("C--> " + num);
+				if (fromBrres_prevbase.Width <= prevtoBrres_width && fromBrres_prevbase.Height <= prevtoBrres_height) {
+//					Console.WriteLine("C--> " + num);
 					toBrres_prevbase.ReplaceRaw(fromBrres_prevbase.OriginalSource.Address, fromBrres_prevbase.OriginalSource.Length);
 				} else {
-					Console.WriteLine("R--> " + num);
+//					Console.WriteLine("R--> " + num);
 					using (Bitmap source = fromBrres_prevbase.GetImage(0)) {
-						using (Bitmap thumbnail = new Bitmap(88, 88)) {
+						using (Bitmap thumbnail = new Bitmap(prevtoBrres_width, prevtoBrres_height)) {
 							using (Graphics g = Graphics.FromImage(thumbnail)) {
 								g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 								g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-								g.DrawImage(source, 0, 0, 88, 88);
+								g.DrawImage(source, 0, 0, prevtoBrres_width, prevtoBrres_height);
 							}
-							if (i == 31) thumbnail.Save("31.png", System.Drawing.Imaging.ImageFormat.Png);
+//							if (i == 31) thumbnail.Save("31.png", System.Drawing.Imaging.ImageFormat.Png);
 							using (UnsafeBuffer cmprPreview = TextureConverter.CMPR.GeneratePreview(thumbnail)) {
 								FileMap map = cmpr_converter.EncodeTextureCached(thumbnail, 1, cmprPreview);
 								toBrres_prevbase.ReplaceRaw(map);
@@ -62,19 +58,19 @@ namespace TransferSSS {
 				#region MenSelmapFrontStname (resize to 104x56)
 				TEX0Node fromBrres_frontstname = fromBrres_tex.FindChild("MenSelmapFrontStname." + num, false) as TEX0Node;
 				TEX0Node toBrres_frontstname = toBrres_tex.FindChild("MenSelmapFrontStname." + num, false) as TEX0Node;
-				if (fromBrres_frontstname.Width <= 104 && fromBrres_frontstname.Height <= 56) {
-					Console.WriteLine("C--> " + num);
+				if (fromBrres_frontstname.Width <= frontstname_width && fromBrres_frontstname.Height <= frontstname_height) {
+//					Console.WriteLine("C--> " + num);
 					toBrres_frontstname.ReplaceRaw(fromBrres_frontstname.OriginalSource.Address, fromBrres_frontstname.OriginalSource.Length);
 				} else {
-					Console.WriteLine("R--> " + num);
+//					Console.WriteLine("R--> " + num);
 					using (Bitmap source = fromBrres_frontstname.GetImage(0)) {
-						using (Bitmap thumbnail = new Bitmap(88, 88)) {
+						using (Bitmap thumbnail = new Bitmap(frontstname_width, frontstname_height)) {
 							using (Graphics g = Graphics.FromImage(thumbnail)) {
 								g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 								g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-								g.DrawImage(source, 0, 0, 104, 56);
+								g.DrawImage(source, 0, 0, frontstname_width, frontstname_height);
 							}
-							if (i == 31) thumbnail.Save("31.png", System.Drawing.Imaging.ImageFormat.Png);
+//							if (i == 31) thumbnail.Save("31.png", System.Drawing.Imaging.ImageFormat.Png);
 							FileMap map = i4_converter.EncodeTEX0Texture(thumbnail, 1);
 							toBrres_frontstname.ReplaceRaw(map);
 						}
@@ -86,17 +82,38 @@ namespace TransferSSS {
 
 			#region MenSelchrMark (original mapping) --> SeriesIcon (my new common5)
 			if (toBrres_usesSeriesIcon) {
-				// The common5 that we are copying these icons *to* uses my SeriesIcon naming
-				
+				// The common5 we're copying *to* uses SeriesIcon. Copy 1-31 and 50-59, the original Brawl stages.
+				for (int i = 1; i < 60; i++) if (i <= 31 || i >= 50) {
+					if (fromBrres_usesSeriesIcon) {
+						// Direct copy
+						copyTexture(fromBrres_tex, "SeriesIcon." + i.ToString("00"),
+							toBrres_tex, "SeriesIcon." + i.ToString("00"));
+					} else {
+						// The common5 we're copying *from* uses MenSelchrMark
+						copyTexture(fromBrres_tex, "MenSelchrMark." + seriesicon_mappings[i].ToString("00"),
+							toBrres_tex, "SeriesIcon." + i.ToString("00"));
+					}
+				}
 			} else {
-				// The common5 that we are copying these icons *to* uses Brawl's MenSelchrMark naming
-				
+				// The common5 we're copying *to* uses MenSelchrMark. Skip #16 (not present in the SSS).
+				for (int i = 1; i < 24; i++ ) if (i != 16) {
+					if (fromBrres_usesSeriesIcon) {
+						// The common5 we're copying *from* uses SeriesIcon - we can't copy all the icons, because there aren't as many
+						copyTexture(fromBrres_tex, "SeriesIcon." + i.ToString("00"),
+							toBrres_tex, "MenSelchrMark." + firstIndexOf(seriesicon_mappings, i).ToString("00"));
+					} else {
+						// Direct copy
+						Console.WriteLine("4,i=" + i);
+						copyTexture(fromBrres_tex, "MenSelchrMark." + i.ToString("00"),
+							toBrres_tex, "MenSelchrMark." + i.ToString("00"));
+					}
+				}
 			}
 			#endregion
-			toBrres.Export("out.brres");
+			toBrres_file.Export("out.brres");
 		}
 
-		private void copyTexture(ResourceNode parent_from, string child_from, ResourceNode parent_to, string child_to) {
+		private static void copyTexture(ResourceNode parent_from, string child_from, ResourceNode parent_to, string child_to) {
 			TEX0Node from = parent_from.FindChild(child_from, false) as TEX0Node;
 /*			TEX0Node to = fromBrres_tex.FindChild((
 				fromBrres_usesSeriesIcon ? name_SeriesIcon : name_MenSelchrMark
@@ -104,7 +121,16 @@ namespace TransferSSS {
 			TEX0Node to = parent_to.FindChild(child_to, false) as TEX0Node;
 			DataSource from_source = from.OriginalSource;
 			to.ReplaceRaw(from_source.Address, from_source.Length);
+			Console.WriteLine(child_from + " --> " + child_to);
+		}
 
+		private static int firstIndexOf(int[] array, int search) {
+			for (int i = 0; i < array.Length; i++) {
+				if (array[i] == search) {
+					return i;
+				}
+			}
+			return -1;
 		}
 	}
 }
