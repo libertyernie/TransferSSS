@@ -10,6 +10,9 @@ using System.IO;
 namespace TransferSSS {
 	class Program {
 		static void Main(string[] args) {
+			ProgressWindow progress = new ProgressWindow();
+			progress.Begin(0, 100, 0);
+
 			Assembly assembly = Assembly.GetExecutingAssembly();
 			Stream toBrres_common5_stream = assembly.GetManifestResourceStream("TransferSSS.common5.pac");
 			byte[] toBrres_common5_data = new byte[toBrres_common5_stream.Length];
@@ -31,7 +34,8 @@ namespace TransferSSS {
 												3, 5, 2, 10, 6, 1, 7, 9, 4, 8};
 
 			ResourceNode toBrres_file = toBrres_common5.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
-			ResourceNode fromBrres_file = NodeFactory.FromFile(null, "custom.brres");
+			ResourceNode fromBrres_file = NodeFactory.FromFile(null, "/private/wii/app/RSBE/pf/system/common5.pac")
+				.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
 			ResourceNode toBrres_tex = toBrres_file.FindChild("Textures(NW4R)", false);
 			ResourceNode fromBrres_tex = fromBrres_file.FindChild("Textures(NW4R)", false);
 			ResourceNode toBrres_pal = toBrres_file.FindChild("Palettes(NW4R)", false);
@@ -70,7 +74,7 @@ namespace TransferSSS {
 						}
 					}
 					#endregion
-
+					progress.Update(i);
 					#region MenSelmapFrontStname (resize to 104x56)
 					TEX0Node fromBrres_frontstname = fromBrres_tex.FindChild("MenSelmapFrontStname." + num, false) as TEX0Node;
 					TEX0Node toBrres_frontstname = toBrres_tex.FindChild("MenSelmapFrontStname." + num, false) as TEX0Node;
@@ -133,20 +137,22 @@ namespace TransferSSS {
 
 			#region Copy 3D models
 			/*ResourceNode toBrres_mdl = toBrres_file.FindChild("3DModels(NW4R)", false);
-		ResourceNode fromBrres_mdl = fromBrres_file.FindChild("3DModels(NW4R)", false);
-		foreach (ResourceNode from in fromBrres_mdl.Children) {
-			if (from.Name != "MenSelmapPos") {
-				ResourceNode to = toBrres_mdl.FindChild(from.Name, false);
-				if (to == null) {
-					MessageBox.Show("No " + from.Name + " model in destination");
-				} else {
-					copyTexture(from, to);
+			ResourceNode fromBrres_mdl = fromBrres_file.FindChild("3DModels(NW4R)", false);
+			foreach (ResourceNode from in fromBrres_mdl.Children) {
+				if (from.Name != "MenSelmapPos") {
+					ResourceNode to = toBrres_mdl.FindChild(from.Name, false);
+					if (to == null) {
+						MessageBox.Show("No " + from.Name + " model in destination");
+					} else {
+						copyTexture(from, to);
+					}
 				}
-			}
-		}*/
+			}*/
 			#endregion
-			toBrres_file.Export("out.brres");
-			toBrres_common5.Export("out.pac");
+
+			toBrres_common5.Merge();
+			toBrres_common5.Export("common5.pac");
+			progress.Dispose();
 		}
 
 		private static void copyTexture(ResourceNode parent_from, string child_from, ResourceNode parent_to, string child_to) {
