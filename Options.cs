@@ -50,6 +50,37 @@ namespace TransferSSS {
 			}
 		}
 
+		public int Prevbase_width_std {
+			get {
+				return (int)prevbase_width_std.Value;
+			}
+		}
+		public int Prevbase_height_std {
+			get {
+				return (int)prevbase_height_std.Value;
+			}
+		}
+		public int Prevbase_width_exp {
+			get {
+				return (int)prevbase_width_exp.Value;
+			}
+		}
+		public int Prevbase_height_exp {
+			get {
+				return (int)prevbase_height_exp.Value;
+			}
+		}
+		public int Frontstname_width {
+			get {
+				return (int)frontstname_width.Value;
+			}
+		}
+		public int Frontstname_height {
+			get {
+				return (int)frontstname_height.Value;
+			}
+		}
+
 		public Options() {
 			InitializeComponent();
 
@@ -98,6 +129,11 @@ namespace TransferSSS {
 			if (openFileDialog1.ShowDialog() == DialogResult.OK) {
 				Mu_menumain = new FileInfo(openFileDialog1.FileName);
 			}
+		}
+
+		private void btnOkay_Click(object sender, EventArgs e) {
+			DialogResult = DialogResult.OK;
+			Close();
 		}
 	}
 }

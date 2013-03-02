@@ -11,7 +11,15 @@ namespace TransferSSS {
 	class Program {
 		[STAThread]
 		static void Main(string[] args) {
-			new Options().ShowDialog();
+			Options o = new Options();
+			MessageBox.Show(""+o.ShowDialog());
+			MessageBox.Show(
+				o.Prevbase_width_std + "," +
+				o.Prevbase_height_std + "," +
+				o.Prevbase_width_exp + "," +
+				o.Prevbase_height_exp + "," +
+				o.Frontstname_width + "," +
+				o.Frontstname_height + ",");
 		}
 		static void realmain() {
 			const int prevbase_width_std = 88; // Stages 1-31, 50-59
