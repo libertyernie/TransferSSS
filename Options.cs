@@ -79,9 +79,24 @@ namespace TransferSSS {
 		}
 
 		private void common5_button_Click(object sender, EventArgs e) {
-			openFileDialog1.InitialDirectory = Common5.DirectoryName;
+			if (Common5 != null) {
+				openFileDialog1.InitialDirectory = Common5.DirectoryName;
+			} else if (Mu_menumain != null) {
+				openFileDialog1.InitialDirectory = Mu_menumain.Directory.Parent.FullName;
+			}
 			if (openFileDialog1.ShowDialog() == DialogResult.OK) {
-				common5_label.Text = openFileDialog1.FileName;
+				Common5 = new FileInfo(openFileDialog1.FileName);
+			}
+		}
+
+		private void mu_menumain_change_Click(object sender, EventArgs e) {
+			if (Mu_menumain != null) {
+				openFileDialog1.InitialDirectory = Mu_menumain.DirectoryName;
+			} else if (Common5 != null) {
+				openFileDialog1.InitialDirectory = Common5.Directory.Parent.Parent.FullName;
+			}
+			if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+				Mu_menumain = new FileInfo(openFileDialog1.FileName);
 			}
 		}
 	}

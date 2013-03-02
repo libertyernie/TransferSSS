@@ -36,10 +36,10 @@
 			// 
 			this.common5_button.AutoSize = true;
 			this.common5_button.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.common5_button.Location = new System.Drawing.Point(175, 0);
+			this.common5_button.Location = new System.Drawing.Point(326, 0);
 			this.common5_button.Margin = new System.Windows.Forms.Padding(0);
 			this.common5_button.Name = "common5_button";
-			this.common5_button.Size = new System.Drawing.Size(117, 24);
+			this.common5_button.Size = new System.Drawing.Size(66, 24);
 			this.common5_button.TabIndex = 1;
 			this.common5_button.Text = "Change";
 			this.common5_button.UseVisualStyleBackColor = true;
@@ -50,7 +50,7 @@
 			this.common5_label.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.common5_label.Location = new System.Drawing.Point(3, 0);
 			this.common5_label.Name = "common5_label";
-			this.common5_label.Size = new System.Drawing.Size(169, 24);
+			this.common5_label.Size = new System.Drawing.Size(320, 24);
 			this.common5_label.TabIndex = 0;
 			this.common5_label.Text = "common5_label";
 			this.common5_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -58,8 +58,8 @@
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
 			this.tableLayoutPanel1.Controls.Add(this.common5_button, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.common5_label, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_label, 0, 1);
@@ -70,7 +70,7 @@
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(292, 48);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 48);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// mu_menumain_label
@@ -79,7 +79,7 @@
 			this.mu_menumain_label.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mu_menumain_label.Location = new System.Drawing.Point(3, 24);
 			this.mu_menumain_label.Name = "mu_menumain_label";
-			this.mu_menumain_label.Size = new System.Drawing.Size(169, 24);
+			this.mu_menumain_label.Size = new System.Drawing.Size(320, 24);
 			this.mu_menumain_label.TabIndex = 2;
 			this.mu_menumain_label.Text = "mu_menumain_label";
 			this.mu_menumain_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -87,13 +87,14 @@
 			// mu_menumain_change
 			// 
 			this.mu_menumain_change.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mu_menumain_change.Location = new System.Drawing.Point(175, 24);
+			this.mu_menumain_change.Location = new System.Drawing.Point(326, 24);
 			this.mu_menumain_change.Margin = new System.Windows.Forms.Padding(0);
 			this.mu_menumain_change.Name = "mu_menumain_change";
-			this.mu_menumain_change.Size = new System.Drawing.Size(117, 24);
+			this.mu_menumain_change.Size = new System.Drawing.Size(66, 24);
 			this.mu_menumain_change.TabIndex = 3;
 			this.mu_menumain_change.Text = "button1";
 			this.mu_menumain_change.UseVisualStyleBackColor = true;
+			this.mu_menumain_change.Click += new System.EventHandler(this.mu_menumain_change_Click);
 			// 
 			// openFileDialog1
 			// 
@@ -103,7 +104,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.ClientSize = new System.Drawing.Size(392, 173);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "Options";
 			this.Text = "Options";
