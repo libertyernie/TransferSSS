@@ -9,7 +9,11 @@ using System.IO;
 
 namespace TransferSSS {
 	class Program {
+		[STAThread]
 		static void Main(string[] args) {
+			new Options().ShowDialog();
+		}
+		static void realmain() {
 			const int prevbase_width_std = 88; // Stages 1-31, 50-59
 			const int prevbase_height_std = 88; // Stages 1-31, 50-59
 			const int prevbase_width_exp = 88; // Stages 32-49, 60+
