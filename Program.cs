@@ -19,28 +19,39 @@ namespace TransferSSS {
 					o.Prevbase_width_exp + "," +
 					o.Prevbase_height_exp + "," +
 					o.Frontstname_width + "," +
-					o.Frontstname_height + ",");
+					o.Frontstname_height);
 
 				Assembly assembly = Assembly.GetExecutingAssembly();
-				Stream toBrres_common5_stream = assembly.GetManifestResourceStream("TransferSSS.common5.pac");
-				byte[] toBrres_common5_data = new byte[toBrres_common5_stream.Length];
-				toBrres_common5_stream.Read(toBrres_common5_data, 0, toBrres_common5_data.Length);
-				toBrres_common5_stream.Close();
-				string toBrres_common5_file = Path.GetTempFileName();
-				FileStream toBrres_common5_outstream = new FileStream(toBrres_common5_file, FileMode.Create);
-				toBrres_common5_outstream.Write(toBrres_common5_data, 0, toBrres_common5_data.Length);
-				toBrres_common5_outstream.Close();
+				Stream toBrres_embedded_stream = assembly.GetManifestResourceStream("TransferSSS.MiscData[80].brres");
+				byte[] toBrres_embedded_data = new byte[toBrres_embedded_stream.Length];
+				toBrres_embedded_stream.Read(toBrres_embedded_data, 0, toBrres_embedded_data.Length);
+				toBrres_embedded_stream.Close();
+				string toBrres_embedded_file = Path.GetTempFileName();
+				FileStream toBrres_embedded_outstream = new FileStream(toBrres_embedded_file, FileMode.Create);
+				toBrres_embedded_outstream.Write(toBrres_embedded_data, 0, toBrres_embedded_data.Length);
+				toBrres_embedded_outstream.Close();
 
-				ResourceNode toBrres_common5 = NodeFactory.FromFile(null, toBrres_common5_file);
-
-				ResourceNode toBrres_node = toBrres_common5.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
+				ResourceNode toBrres_node = NodeFactory.FromFile(null, toBrres_embedded_file);
 
 				if (o.Common5 != null) {
-					ResourceNode fromBrres_common5_node = NodeFactory.FromFile(null, o.Common5.FullName)
-						.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
+					ResourceNode fromBrres_common5 = NodeFactory.FromFile(null, o.Common5.FullName);
+					ResourceNode fromBrres_common5_node = fromBrres_common5.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
 					realmain(fromBrres_common5_node, toBrres_node);
-					toBrres_common5.Merge();
-					toBrres_common5.Export("common5.pac");
+					toBrres_node.Rebuild();
+					fromBrres_common5_node.ReplaceRaw(toBrres_node.WorkingSource.Address, toBrres_node.WorkingSource.Length);
+					fromBrres_common5.Merge();
+					fromBrres_common5.Export("common5.pac");
+				}
+				if (o.Mu_menumain != null) {
+					ResourceNode fromBrres_mu_menumain = NodeFactory.FromFile(null, o.Mu_menumain.FullName);
+					ResourceNode fromBrres_mu_menumain_node = fromBrres_mu_menumain.FindChild("MiscData[0]", false);
+					if (o.Common5 == null) {
+						realmain(fromBrres_mu_menumain_node, toBrres_node);
+						toBrres_node.Rebuild();
+					}
+					fromBrres_mu_menumain_node.ReplaceRaw(toBrres_node.WorkingSource.Address, toBrres_node.WorkingSource.Length);
+					fromBrres_mu_menumain.Merge();
+					fromBrres_mu_menumain.Export("mu_menumain.pac");
 				}
 			}
 		}
@@ -53,7 +64,7 @@ namespace TransferSSS {
 			const int frontstname_height = 56;
 
 			ProgressWindow progress = new ProgressWindow();
-			progress.Begin(0, 366, 15);
+			progress.Begin(0, 341, 0);
 
 			// Icons will be copied directly. MenSelchrMark will have special logic. MenSelmapMark will be ignored.
 			int[] seriesicon_mappings = { -1, 20, 20, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 8, 9, 11, 18, 15, 12, 14, 13, 1, 10, 21, 17, 19, 22, 23,
@@ -65,7 +76,6 @@ namespace TransferSSS {
 			ResourceNode toBrres_pal = toBrres.FindChild("Palettes(NW4R)", false);
 			ResourceNode fromBrres_pal = fromBrres.FindChild("Palettes(NW4R)", false);
 
-			progress.Update(25);
 			//TODO check both source and dest for menselchrmark vs seriesicon (4 cases)
 			bool toBrres_usesSeriesIcon = (toBrres_tex.FindChild("SeriesIcon.01", false) != null);
 			bool fromBrres_usesSeriesIcon = (fromBrres_tex.FindChild("SeriesIcon.01", false) != null);
@@ -131,7 +141,7 @@ namespace TransferSSS {
 					copyTexture(fromBrres_pal, "MenSelmapIcon." + num, toBrres_pal, "MenSelmapIcon." + num);
 					copyTexture(fromBrres_tex, "MenSelmapIcon." + num, toBrres_tex, "MenSelmapIcon." + num);
 					#endregion
-					progress.Update(25 + 3*i);
+					progress.Update(3*i);
 				} else {
 					Console.WriteLine("Skipped " + num);
 				}
@@ -153,7 +163,7 @@ namespace TransferSSS {
 								toBrres_tex, "SeriesIcon." + num);
 						}
 					}
-					progress.Update(25 + 237 + i);
+					progress.Update(237 + i);
 				}
 			} else {
 				// The common5 we're copying *to* uses MenSelchrMark. Skip #16 (not present in the SSS).
@@ -167,7 +177,7 @@ namespace TransferSSS {
 							copyTexture(fromBrres_tex, "MenSelchrMark." + i.ToString("00"),
 								toBrres_tex, "MenSelchrMark." + i.ToString("00"));
 						}
-						progress.Update(25 + 247 + 3*i);
+						progress.Update(247 + 3*i);
 					}
 			}
 			#endregion
