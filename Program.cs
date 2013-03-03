@@ -12,16 +12,39 @@ namespace TransferSSS {
 		[STAThread]
 		static void Main(string[] args) {
 			Options o = new Options();
-			MessageBox.Show(""+o.ShowDialog());
-			MessageBox.Show(
-				o.Prevbase_width_std + "," +
-				o.Prevbase_height_std + "," +
-				o.Prevbase_width_exp + "," +
-				o.Prevbase_height_exp + "," +
-				o.Frontstname_width + "," +
-				o.Frontstname_height + ",");
+			if (o.ShowDialog() == DialogResult.OK) {
+				MessageBox.Show(
+					o.Prevbase_width_std + "," +
+					o.Prevbase_height_std + "," +
+					o.Prevbase_width_exp + "," +
+					o.Prevbase_height_exp + "," +
+					o.Frontstname_width + "," +
+					o.Frontstname_height + ",");
+
+				Assembly assembly = Assembly.GetExecutingAssembly();
+				Stream toBrres_common5_stream = assembly.GetManifestResourceStream("TransferSSS.common5.pac");
+				byte[] toBrres_common5_data = new byte[toBrres_common5_stream.Length];
+				toBrres_common5_stream.Read(toBrres_common5_data, 0, toBrres_common5_data.Length);
+				toBrres_common5_stream.Close();
+				string toBrres_common5_file = Path.GetTempFileName();
+				FileStream toBrres_common5_outstream = new FileStream(toBrres_common5_file, FileMode.Create);
+				toBrres_common5_outstream.Write(toBrres_common5_data, 0, toBrres_common5_data.Length);
+				toBrres_common5_outstream.Close();
+
+				ResourceNode toBrres_common5 = NodeFactory.FromFile(null, toBrres_common5_file);
+
+				ResourceNode toBrres_node = toBrres_common5.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
+
+				if (o.Common5 != null) {
+					ResourceNode fromBrres_common5_node = NodeFactory.FromFile(null, o.Common5.FullName)
+						.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
+					realmain(fromBrres_common5_node, toBrres_node);
+					toBrres_common5.Merge();
+					toBrres_common5.Export("common5.pac");
+				}
+			}
 		}
-		static void realmain() {
+		static void realmain(ResourceNode fromBrres, ResourceNode toBrres) {
 			const int prevbase_width_std = 88; // Stages 1-31, 50-59
 			const int prevbase_height_std = 88; // Stages 1-31, 50-59
 			const int prevbase_width_exp = 88; // Stages 32-49, 60+
@@ -30,32 +53,17 @@ namespace TransferSSS {
 			const int frontstname_height = 56;
 
 			ProgressWindow progress = new ProgressWindow();
-			progress.Begin(0, 366, 0);
+			progress.Begin(0, 366, 15);
 
-			Assembly assembly = Assembly.GetExecutingAssembly();
-			Stream toBrres_common5_stream = assembly.GetManifestResourceStream("TransferSSS.common5.pac");
-			byte[] toBrres_common5_data = new byte[toBrres_common5_stream.Length];
-			toBrres_common5_stream.Read(toBrres_common5_data, 0, toBrres_common5_data.Length);
-			toBrres_common5_stream.Close();
-			string toBrres_common5_file = Path.GetTempFileName();
-			FileStream toBrres_common5_outstream = new FileStream(toBrres_common5_file, FileMode.Create);
-			toBrres_common5_outstream.Write(toBrres_common5_data, 0, toBrres_common5_data.Length);
-			toBrres_common5_outstream.Close();
-			progress.Update(10);
-			ResourceNode toBrres_common5 = NodeFactory.FromFile(null, toBrres_common5_file);
-			progress.Update(15);
 			// Icons will be copied directly. MenSelchrMark will have special logic. MenSelmapMark will be ignored.
 			int[] seriesicon_mappings = { -1, 20, 20, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 8, 9, 11, 18, 15, 12, 14, 13, 1, 10, 21, 17, 19, 22, 23,
 												-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 												3, 5, 2, 10, 6, 1, 7, 9, 4, 8};
 
-			ResourceNode toBrres_file = toBrres_common5.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
-			ResourceNode fromBrres_file = NodeFactory.FromFile(null, "/private/wii/app/RSBE/pf/system/common5.pac")
-				.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
-			ResourceNode toBrres_tex = toBrres_file.FindChild("Textures(NW4R)", false);
-			ResourceNode fromBrres_tex = fromBrres_file.FindChild("Textures(NW4R)", false);
-			ResourceNode toBrres_pal = toBrres_file.FindChild("Palettes(NW4R)", false);
-			ResourceNode fromBrres_pal = fromBrres_file.FindChild("Palettes(NW4R)", false);
+			ResourceNode toBrres_tex = toBrres.FindChild("Textures(NW4R)", false);
+			ResourceNode fromBrres_tex = fromBrres.FindChild("Textures(NW4R)", false);
+			ResourceNode toBrres_pal = toBrres.FindChild("Palettes(NW4R)", false);
+			ResourceNode fromBrres_pal = fromBrres.FindChild("Palettes(NW4R)", false);
 
 			progress.Update(25);
 			//TODO check both source and dest for menselchrmark vs seriesicon (4 cases)
@@ -179,8 +187,6 @@ namespace TransferSSS {
 			}*/
 			#endregion
 //			Console.ReadLine();
-			toBrres_common5.Merge();
-			toBrres_common5.Export("common5.pac");
 			progress.Dispose();
 		}
 

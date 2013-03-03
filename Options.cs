@@ -25,7 +25,7 @@ namespace TransferSSS {
 					common5_label.Text = _common5.FullName;
 					common5_label.Enabled = true;
 				} else {
-					common5_label.Text = "No file selected";
+					common5_label.Text = "No common5 selected";
 					common5_label.Enabled = false;
 				}
 			}
@@ -44,7 +44,7 @@ namespace TransferSSS {
 					mu_menumain_label.Text = _mu_menumain.FullName;
 					mu_menumain_label.Enabled = true;
 				} else {
-					mu_menumain_label.Text = "No file selected";
+					mu_menumain_label.Text = "No mu_menumain selected";
 					mu_menumain_label.Enabled = false;
 				}
 			}
