@@ -14,8 +14,10 @@ namespace TransferSSS {
 			Options o = new Options();
 			if (o.ShowDialog() == DialogResult.OK) {
 				MessageBox.Show(
+					o.Copy_std + "," +
 					o.Prevbase_width_std + "," +
 					o.Prevbase_height_std + "," +
+					o.Copy_exp + "," +
 					o.Prevbase_width_exp + "," +
 					o.Prevbase_height_exp + "," +
 					o.Frontstname_width + "," +
@@ -36,7 +38,7 @@ namespace TransferSSS {
 				if (o.Common5 != null) {
 					ResourceNode fromBrres_common5 = NodeFactory.FromFile(null, o.Common5.FullName);
 					ResourceNode fromBrres_common5_node = fromBrres_common5.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
-					realmain(fromBrres_common5_node, toBrres_node);
+					sss_copy(fromBrres_common5_node, toBrres_node, o);
 					toBrres_node.Rebuild();
 					fromBrres_common5_node.ReplaceRaw(toBrres_node.WorkingSource.Address, toBrres_node.WorkingSource.Length);
 					fromBrres_common5.Merge();
@@ -46,7 +48,7 @@ namespace TransferSSS {
 					ResourceNode fromBrres_mu_menumain = NodeFactory.FromFile(null, o.Mu_menumain.FullName);
 					ResourceNode fromBrres_mu_menumain_node = fromBrres_mu_menumain.FindChild("MiscData[0]", false);
 					if (o.Common5 == null) {
-						realmain(fromBrres_mu_menumain_node, toBrres_node);
+						sss_copy(fromBrres_mu_menumain_node, toBrres_node, o);
 						toBrres_node.Rebuild();
 					}
 					fromBrres_mu_menumain_node.ReplaceRaw(toBrres_node.WorkingSource.Address, toBrres_node.WorkingSource.Length);
@@ -55,13 +57,16 @@ namespace TransferSSS {
 				}
 			}
 		}
-		static void realmain(ResourceNode fromBrres, ResourceNode toBrres) {
-			const int prevbase_width_std = 88; // Stages 1-31, 50-59
-			const int prevbase_height_std = 88; // Stages 1-31, 50-59
-			const int prevbase_width_exp = 88; // Stages 32-49, 60+
-			const int prevbase_height_exp = 88; // Stages 32-49, 60+
-			const int frontstname_width = 104;
-			const int frontstname_height = 56;
+
+		static void sss_copy(ResourceNode fromBrres, ResourceNode toBrres, Options o) {
+			int prevbase_width_std = o.Prevbase_width_std; // Stages 1-31, 50-59
+			int prevbase_height_std = o.Prevbase_height_std; // Stages 1-31, 50-59
+			int prevbase_width_exp = o.Prevbase_width_exp; // Stages 32-49, 60+
+			int prevbase_height_exp = o.Prevbase_height_exp; // Stages 32-49, 60+
+			int frontstname_width = o.Frontstname_width;
+			int frontstname_height = o.Frontstname_height;
+			bool copy_std = o.Copy_std;
+			bool copy_exp = o.Copy_exp;
 
 			ProgressWindow progress = new ProgressWindow();
 			progress.Begin(0, 341, 0);
@@ -84,29 +89,33 @@ namespace TransferSSS {
 			TextureConverter i4_converter = TextureConverter.Get(WiiPixelFormat.I4);
 			for (int i = 1; i < 80; i++) {
 				string num = i.ToString("00");
-				if ((fromBrres_tex.FindChild("MenSelmapFrontStname." + num, false) != null) &&
+				int prevbase_width, prevbase_height;
+				bool copy;
+				if ((i < 32) || ((i >= 50) && (i < 60))) {
+					prevbase_width = prevbase_width_std;
+					prevbase_height = prevbase_height_std;
+					copy = copy_std;
+				} else {
+					prevbase_width = prevbase_width_exp;
+					prevbase_height = prevbase_height_exp;
+					copy = copy_exp;
+				}
+				if (copy &&
+				(fromBrres_tex.FindChild("MenSelmapFrontStname." + num, false) != null) &&
 				(toBrres_tex.FindChild("MenSelmapFrontStname." + num, false) != null)) {
 					Console.WriteLine("  Copying picture, name and icon for " + num);
 					#region MenSelmapPrevbase (resize)
-					int width, height;
-					if ((i < 32) || ((i >= 50) && (i < 60))) {
-						width = prevbase_width_std;
-						height = prevbase_height_std;
-					} else {
-						width = prevbase_width_exp;
-						height = prevbase_height_exp;
-					}
 					TEX0Node fromBrres_prevbase = fromBrres_tex.FindChild("MenSelmapPrevbase." + num, false) as TEX0Node;
 					TEX0Node toBrres_prevbase = toBrres_tex.FindChild("MenSelmapPrevbase." + num, false) as TEX0Node;
-					if (fromBrres_prevbase.Width <= width && fromBrres_prevbase.Height <= height) {
+					if (fromBrres_prevbase.Width <= prevbase_width && fromBrres_prevbase.Height <= prevbase_height) {
 						toBrres_prevbase.ReplaceRaw(fromBrres_prevbase.OriginalSource.Address, fromBrres_prevbase.OriginalSource.Length);
 					} else {
 						using (Bitmap source = fromBrres_prevbase.GetImage(0)) {
-							using (Bitmap thumbnail = new Bitmap(width, height)) {
+							using (Bitmap thumbnail = new Bitmap(prevbase_width, prevbase_height)) {
 								using (Graphics g = Graphics.FromImage(thumbnail)) {
 									g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 									g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-									g.DrawImage(source, 0, 0, width, height);
+									g.DrawImage(source, 0, 0, prevbase_width, prevbase_height);
 								}
 								using (UnsafeBuffer cmprPreview = TextureConverter.CMPR.GeneratePreview(thumbnail)) {
 									FileMap map = cmpr_converter.EncodeTextureCached(thumbnail, 1, cmprPreview);

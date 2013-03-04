@@ -81,6 +81,17 @@ namespace TransferSSS {
 			}
 		}
 
+		public bool Copy_std {
+			get {
+				return copy_std.Checked;
+			}
+		}
+		public bool Copy_exp {
+			get {
+				return copy_exp.Checked;
+			}
+		}
+
 		public Options() {
 			InitializeComponent();
 

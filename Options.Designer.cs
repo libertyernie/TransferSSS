@@ -440,7 +440,6 @@
 			this.copy_std.Name = "copy_std";
 			this.copy_std.Size = new System.Drawing.Size(14, 22);
 			this.copy_std.TabIndex = 6;
-			this.copy_std.Text = "checkBox1";
 			this.copy_std.UseVisualStyleBackColor = true;
 			// 
 			// copy_exp
@@ -451,7 +450,6 @@
 			this.copy_exp.Name = "copy_exp";
 			this.copy_exp.Size = new System.Drawing.Size(14, 22);
 			this.copy_exp.TabIndex = 7;
-			this.copy_exp.Text = "checkBox1";
 			this.copy_exp.UseVisualStyleBackColor = true;
 			// 
 			// copy_std_label
