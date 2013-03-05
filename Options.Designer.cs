@@ -42,13 +42,16 @@
 			this.frontstname_width = new System.Windows.Forms.NumericUpDown();
 			this.label6 = new System.Windows.Forms.Label();
 			this.frontstname_height = new System.Windows.Forms.NumericUpDown();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.btnOkay = new System.Windows.Forms.Button();
 			this.copy_std = new System.Windows.Forms.CheckBox();
 			this.copy_exp = new System.Windows.Forms.CheckBox();
 			this.copy_std_label = new System.Windows.Forms.Label();
 			this.copy_exp_label = new System.Windows.Forms.Label();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.btnOkay = new System.Windows.Forms.Button();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_width_std)).BeginInit();
@@ -59,6 +62,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.frontstname_height)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// common5_button
@@ -87,19 +91,19 @@
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.33333F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
 			this.tableLayoutPanel1.Controls.Add(this.common5_button, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.common5_label, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_label, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_change, 1, 1);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 48);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 49);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// mu_menumain_label
@@ -108,7 +112,7 @@
 			this.mu_menumain_label.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mu_menumain_label.Location = new System.Drawing.Point(3, 24);
 			this.mu_menumain_label.Name = "mu_menumain_label";
-			this.mu_menumain_label.Size = new System.Drawing.Size(320, 24);
+			this.mu_menumain_label.Size = new System.Drawing.Size(320, 25);
 			this.mu_menumain_label.TabIndex = 2;
 			this.mu_menumain_label.Text = "mu_menumain_label";
 			this.mu_menumain_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -119,7 +123,7 @@
 			this.mu_menumain_change.Location = new System.Drawing.Point(326, 24);
 			this.mu_menumain_change.Margin = new System.Windows.Forms.Padding(0);
 			this.mu_menumain_change.Name = "mu_menumain_change";
-			this.mu_menumain_change.Size = new System.Drawing.Size(66, 24);
+			this.mu_menumain_change.Size = new System.Drawing.Size(66, 25);
 			this.mu_menumain_change.TabIndex = 3;
 			this.mu_menumain_change.Text = "Change";
 			this.mu_menumain_change.UseVisualStyleBackColor = true;
@@ -155,13 +159,13 @@
 			this.tableLayoutPanel2.Controls.Add(this.copy_std_label, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.copy_exp_label, 1, 1);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 48);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 73);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 3;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 85);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 92);
 			this.tableLayoutPanel2.TabIndex = 2;
 			// 
 			// label1
@@ -170,7 +174,7 @@
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label1.Location = new System.Drawing.Point(119, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(74, 28);
+			this.label1.Size = new System.Drawing.Size(74, 30);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Minimum size (prevbase):";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -179,9 +183,9 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label2.Location = new System.Drawing.Point(119, 28);
+			this.label2.Location = new System.Drawing.Point(119, 30);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(74, 28);
+			this.label2.Size = new System.Drawing.Size(74, 30);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Minimum size (prevbase):";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -190,9 +194,9 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label3.Location = new System.Drawing.Point(119, 56);
+			this.label3.Location = new System.Drawing.Point(119, 60);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(74, 29);
+			this.label3.Size = new System.Drawing.Size(74, 32);
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Stage names";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -205,7 +209,7 @@
             0,
             0,
             0});
-			this.prevbase_width_std.Location = new System.Drawing.Point(199, 5);
+			this.prevbase_width_std.Location = new System.Drawing.Point(199, 7);
 			this.prevbase_width_std.Maximum = new decimal(new int[] {
             176,
             0,
@@ -229,7 +233,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label4.Location = new System.Drawing.Point(288, 9);
+			this.label4.Location = new System.Drawing.Point(288, 11);
 			this.label4.Margin = new System.Windows.Forms.Padding(6);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(12, 13);
@@ -245,7 +249,7 @@
             0,
             0,
             0});
-			this.prevbase_height_std.Location = new System.Drawing.Point(309, 5);
+			this.prevbase_height_std.Location = new System.Drawing.Point(309, 7);
 			this.prevbase_height_std.Maximum = new decimal(new int[] {
             176,
             0,
@@ -273,7 +277,7 @@
             0,
             0,
             0});
-			this.prevbase_width_exp.Location = new System.Drawing.Point(199, 33);
+			this.prevbase_width_exp.Location = new System.Drawing.Point(199, 37);
 			this.prevbase_width_exp.Maximum = new decimal(new int[] {
             176,
             0,
@@ -297,7 +301,7 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label5.Location = new System.Drawing.Point(288, 37);
+			this.label5.Location = new System.Drawing.Point(288, 41);
 			this.label5.Margin = new System.Windows.Forms.Padding(6);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(12, 13);
@@ -313,7 +317,7 @@
             0,
             0,
             0});
-			this.prevbase_height_exp.Location = new System.Drawing.Point(309, 33);
+			this.prevbase_height_exp.Location = new System.Drawing.Point(309, 37);
 			this.prevbase_height_exp.Maximum = new decimal(new int[] {
             176,
             0,
@@ -341,7 +345,7 @@
             0,
             0,
             0});
-			this.frontstname_width.Location = new System.Drawing.Point(199, 62);
+			this.frontstname_width.Location = new System.Drawing.Point(199, 69);
 			this.frontstname_width.Maximum = new decimal(new int[] {
             208,
             0,
@@ -365,7 +369,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label6.Location = new System.Drawing.Point(288, 66);
+			this.label6.Location = new System.Drawing.Point(288, 73);
 			this.label6.Margin = new System.Windows.Forms.Padding(6);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(12, 13);
@@ -381,7 +385,7 @@
             0,
             0,
             0});
-			this.frontstname_height.Location = new System.Drawing.Point(309, 62);
+			this.frontstname_height.Location = new System.Drawing.Point(309, 69);
 			this.frontstname_height.Maximum = new decimal(new int[] {
             56,
             0,
@@ -401,11 +405,54 @@
             0,
             0});
 			// 
+			// copy_std
+			// 
+			this.copy_std.AutoSize = true;
+			this.copy_std.Checked = true;
+			this.copy_std.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.copy_std.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.copy_std.Location = new System.Drawing.Point(3, 3);
+			this.copy_std.Name = "copy_std";
+			this.copy_std.Size = new System.Drawing.Size(14, 24);
+			this.copy_std.TabIndex = 6;
+			this.copy_std.UseVisualStyleBackColor = true;
+			// 
+			// copy_exp
+			// 
+			this.copy_exp.AutoSize = true;
+			this.copy_exp.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.copy_exp.Location = new System.Drawing.Point(3, 33);
+			this.copy_exp.Name = "copy_exp";
+			this.copy_exp.Size = new System.Drawing.Size(14, 24);
+			this.copy_exp.TabIndex = 7;
+			this.copy_exp.UseVisualStyleBackColor = true;
+			// 
+			// copy_std_label
+			// 
+			this.copy_std_label.AutoSize = true;
+			this.copy_std_label.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.copy_std_label.Location = new System.Drawing.Point(23, 0);
+			this.copy_std_label.Name = "copy_std_label";
+			this.copy_std_label.Size = new System.Drawing.Size(90, 30);
+			this.copy_std_label.TabIndex = 8;
+			this.copy_std_label.Text = "Keep stage icons (1-31, 50-59)";
+			this.copy_std_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// copy_exp_label
+			// 
+			this.copy_exp_label.AutoSize = true;
+			this.copy_exp_label.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.copy_exp_label.Location = new System.Drawing.Point(23, 30);
+			this.copy_exp_label.Name = "copy_exp_label";
+			this.copy_exp_label.Size = new System.Drawing.Size(90, 30);
+			this.copy_exp_label.TabIndex = 9;
+			this.copy_exp_label.Text = "Keep stage icons (32-49, 60+)";
+			// 
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.flowLayoutPanel1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 133);
+			this.panel1.Location = new System.Drawing.Point(0, 165);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(392, 32);
 			this.panel1.TabIndex = 3;
@@ -430,57 +477,40 @@
 			this.btnOkay.UseVisualStyleBackColor = true;
 			this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
 			// 
-			// copy_std
+			// menuStrip1
 			// 
-			this.copy_std.AutoSize = true;
-			this.copy_std.Checked = true;
-			this.copy_std.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.copy_std.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.copy_std.Location = new System.Drawing.Point(3, 3);
-			this.copy_std.Name = "copy_std";
-			this.copy_std.Size = new System.Drawing.Size(14, 22);
-			this.copy_std.TabIndex = 6;
-			this.copy_std.UseVisualStyleBackColor = true;
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(392, 24);
+			this.menuStrip1.TabIndex = 1;
+			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// copy_exp
+			// helpToolStripMenuItem
 			// 
-			this.copy_exp.AutoSize = true;
-			this.copy_exp.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.copy_exp.Location = new System.Drawing.Point(3, 31);
-			this.copy_exp.Name = "copy_exp";
-			this.copy_exp.Size = new System.Drawing.Size(14, 22);
-			this.copy_exp.TabIndex = 7;
-			this.copy_exp.UseVisualStyleBackColor = true;
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+			this.helpToolStripMenuItem.Text = "Help";
 			// 
-			// copy_std_label
+			// aboutToolStripMenuItem
 			// 
-			this.copy_std_label.AutoSize = true;
-			this.copy_std_label.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.copy_std_label.Location = new System.Drawing.Point(23, 0);
-			this.copy_std_label.Name = "copy_std_label";
-			this.copy_std_label.Size = new System.Drawing.Size(90, 28);
-			this.copy_std_label.TabIndex = 8;
-			this.copy_std_label.Text = "Copy normal (1-31, 50-59)";
-			this.copy_std_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// copy_exp_label
-			// 
-			this.copy_exp_label.AutoSize = true;
-			this.copy_exp_label.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.copy_exp_label.Location = new System.Drawing.Point(23, 28);
-			this.copy_exp_label.Name = "copy_exp_label";
-			this.copy_exp_label.Size = new System.Drawing.Size(90, 28);
-			this.copy_exp_label.TabIndex = 9;
-			this.copy_exp_label.Text = "Copy expansion (32-49, 60+)";
+			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.aboutToolStripMenuItem.Text = "About";
+			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
 			// Options
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(392, 165);
+			this.ClientSize = new System.Drawing.Size(392, 197);
 			this.Controls.Add(this.tableLayoutPanel2);
-			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.Controls.Add(this.menuStrip1);
+			this.Controls.Add(this.panel1);
 			this.Name = "Options";
 			this.Text = "Options";
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -495,7 +525,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.frontstname_height)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.flowLayoutPanel1.ResumeLayout(false);
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -527,6 +560,9 @@
 		private System.Windows.Forms.CheckBox copy_exp;
 		private System.Windows.Forms.Label copy_std_label;
 		private System.Windows.Forms.Label copy_exp_label;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 
 	}
 }

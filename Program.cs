@@ -11,6 +11,13 @@ namespace TransferSSS {
 	class Program {
 		[STAThread]
 		static void Main(string[] args) {
+			ResourceNode toBrres_node = null;
+			try {
+				toBrres_node = NodeFactory.FromFile(null, "MiscData[80].brres");
+			} catch (FileNotFoundException) {
+				MessageBox.Show("Error: cannot find a MiscData[80].brres file to use as a base.");
+				return;
+			}
 			Options o = new Options();
 			if (o.ShowDialog() == DialogResult.OK) {
 				MessageBox.Show(
@@ -22,18 +29,6 @@ namespace TransferSSS {
 					o.Prevbase_height_exp + "," +
 					o.Frontstname_width + "," +
 					o.Frontstname_height);
-
-				Assembly assembly = Assembly.GetExecutingAssembly();
-				Stream toBrres_embedded_stream = assembly.GetManifestResourceStream("TransferSSS.MiscData[80].brres");
-				byte[] toBrres_embedded_data = new byte[toBrres_embedded_stream.Length];
-				toBrres_embedded_stream.Read(toBrres_embedded_data, 0, toBrres_embedded_data.Length);
-				toBrres_embedded_stream.Close();
-				string toBrres_embedded_file = Path.GetTempFileName();
-				FileStream toBrres_embedded_outstream = new FileStream(toBrres_embedded_file, FileMode.Create);
-				toBrres_embedded_outstream.Write(toBrres_embedded_data, 0, toBrres_embedded_data.Length);
-				toBrres_embedded_outstream.Close();
-
-				ResourceNode toBrres_node = NodeFactory.FromFile(null, toBrres_embedded_file);
 
 				if (o.Common5 != null) {
 					ResourceNode fromBrres_common5 = NodeFactory.FromFile(null, o.Common5.FullName);

@@ -146,5 +146,14 @@ namespace TransferSSS {
 			DialogResult = DialogResult.OK;
 			Close();
 		}
+
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+			const string about = "This program will perform the following tasks:\n" +
+				" * Read the custom stage icons/names/portraits from common5.pac and/or mu_menumain.pac\n" +
+				" * Resize the images and copy them into a new, stage-expansion-enabled BRRES, using MiscData[80].brres as a base\n" +
+				" * Insert the new BRRES into copies of common5 and/or mu_menumain, which are saved to the current directory\n" +
+				"";
+			MessageBox.Show(this, about);
+		}
 	}
 }
