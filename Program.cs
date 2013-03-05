@@ -20,7 +20,7 @@ namespace TransferSSS {
 			}
 			Options o = new Options();
 			if (o.ShowDialog() == DialogResult.OK) {
-				MessageBox.Show(
+				/*MessageBox.Show(
 					o.Copy_std + "," +
 					o.Prevbase_width_std + "," +
 					o.Prevbase_height_std + "," +
@@ -28,7 +28,7 @@ namespace TransferSSS {
 					o.Prevbase_width_exp + "," +
 					o.Prevbase_height_exp + "," +
 					o.Frontstname_width + "," +
-					o.Frontstname_height);
+					o.Frontstname_height);*/
 
 				if (o.Common5 != null) {
 					ResourceNode fromBrres_common5 = NodeFactory.FromFile(null, o.Common5.FullName);
@@ -50,6 +50,8 @@ namespace TransferSSS {
 					fromBrres_mu_menumain.Merge();
 					fromBrres_mu_menumain.Export("mu_menumain.pac");
 				}
+
+				MessageBox.Show("Remember to copy the new files to the correct locations.", "Finished");
 			}
 		}
 
