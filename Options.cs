@@ -91,6 +91,11 @@ namespace TransferSSS {
 				return copy_exp.Checked;
 			}
 		}
+		public bool AddCodes {
+			get {
+				return addCodes.Checked;
+			}
+		}
 
 		public Options() {
 			InitializeComponent();

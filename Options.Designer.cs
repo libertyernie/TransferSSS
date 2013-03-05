@@ -44,14 +44,13 @@
 			this.frontstname_height = new System.Windows.Forms.NumericUpDown();
 			this.copy_std = new System.Windows.Forms.CheckBox();
 			this.copy_exp = new System.Windows.Forms.CheckBox();
-			this.copy_std_label = new System.Windows.Forms.Label();
-			this.copy_exp_label = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.btnOkay = new System.Windows.Forms.Button();
 			this.btnAbout = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.addCodes = new System.Windows.Forms.CheckBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_width_std)).BeginInit();
@@ -71,7 +70,7 @@
 			this.common5_button.Location = new System.Drawing.Point(326, 0);
 			this.common5_button.Margin = new System.Windows.Forms.Padding(0);
 			this.common5_button.Name = "common5_button";
-			this.common5_button.Size = new System.Drawing.Size(66, 24);
+			this.common5_button.Size = new System.Drawing.Size(66, 23);
 			this.common5_button.TabIndex = 1;
 			this.common5_button.Text = "Change";
 			this.common5_button.UseVisualStyleBackColor = true;
@@ -82,7 +81,7 @@
 			this.common5_label.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.common5_label.Location = new System.Drawing.Point(3, 0);
 			this.common5_label.Name = "common5_label";
-			this.common5_label.Size = new System.Drawing.Size(320, 24);
+			this.common5_label.Size = new System.Drawing.Size(320, 23);
 			this.common5_label.TabIndex = 0;
 			this.common5_label.Text = "common5_label";
 			this.common5_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -96,22 +95,24 @@
 			this.tableLayoutPanel1.Controls.Add(this.common5_label, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_label, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_change, 1, 1);
+			this.tableLayoutPanel1.Controls.Add(this.addCodes, 0, 2);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 2;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 49);
+			this.tableLayoutPanel1.RowCount = 3;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 72);
 			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// mu_menumain_label
 			// 
 			this.mu_menumain_label.AutoSize = true;
 			this.mu_menumain_label.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mu_menumain_label.Location = new System.Drawing.Point(3, 24);
+			this.mu_menumain_label.Location = new System.Drawing.Point(3, 23);
 			this.mu_menumain_label.Name = "mu_menumain_label";
-			this.mu_menumain_label.Size = new System.Drawing.Size(320, 25);
+			this.mu_menumain_label.Size = new System.Drawing.Size(320, 23);
 			this.mu_menumain_label.TabIndex = 2;
 			this.mu_menumain_label.Text = "mu_menumain_label";
 			this.mu_menumain_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -119,10 +120,10 @@
 			// mu_menumain_change
 			// 
 			this.mu_menumain_change.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mu_menumain_change.Location = new System.Drawing.Point(326, 24);
+			this.mu_menumain_change.Location = new System.Drawing.Point(326, 23);
 			this.mu_menumain_change.Margin = new System.Windows.Forms.Padding(0);
 			this.mu_menumain_change.Name = "mu_menumain_change";
-			this.mu_menumain_change.Size = new System.Drawing.Size(66, 25);
+			this.mu_menumain_change.Size = new System.Drawing.Size(66, 23);
 			this.mu_menumain_change.TabIndex = 3;
 			this.mu_menumain_change.Text = "Change";
 			this.mu_menumain_change.UseVisualStyleBackColor = true;
@@ -134,37 +135,35 @@
 			// 
 			// tableLayoutPanel2
 			// 
-			this.tableLayoutPanel2.ColumnCount = 6;
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+			this.tableLayoutPanel2.ColumnCount = 5;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel2.Controls.Add(this.label1, 2, 0);
-			this.tableLayoutPanel2.Controls.Add(this.label2, 2, 1);
-			this.tableLayoutPanel2.Controls.Add(this.label3, 2, 2);
-			this.tableLayoutPanel2.Controls.Add(this.prevbase_width_std, 3, 0);
-			this.tableLayoutPanel2.Controls.Add(this.label4, 4, 0);
-			this.tableLayoutPanel2.Controls.Add(this.prevbase_height_std, 5, 0);
-			this.tableLayoutPanel2.Controls.Add(this.prevbase_width_exp, 3, 1);
-			this.tableLayoutPanel2.Controls.Add(this.label5, 4, 1);
-			this.tableLayoutPanel2.Controls.Add(this.prevbase_height_exp, 5, 1);
-			this.tableLayoutPanel2.Controls.Add(this.frontstname_width, 3, 2);
-			this.tableLayoutPanel2.Controls.Add(this.label6, 4, 2);
-			this.tableLayoutPanel2.Controls.Add(this.frontstname_height, 5, 2);
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel2.Controls.Add(this.label1, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.label2, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.label3, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.prevbase_width_std, 2, 0);
+			this.tableLayoutPanel2.Controls.Add(this.label4, 3, 0);
+			this.tableLayoutPanel2.Controls.Add(this.prevbase_height_std, 4, 0);
+			this.tableLayoutPanel2.Controls.Add(this.prevbase_width_exp, 2, 1);
+			this.tableLayoutPanel2.Controls.Add(this.label5, 3, 1);
+			this.tableLayoutPanel2.Controls.Add(this.prevbase_height_exp, 4, 1);
+			this.tableLayoutPanel2.Controls.Add(this.frontstname_width, 2, 2);
+			this.tableLayoutPanel2.Controls.Add(this.label6, 3, 2);
+			this.tableLayoutPanel2.Controls.Add(this.frontstname_height, 4, 2);
 			this.tableLayoutPanel2.Controls.Add(this.copy_std, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.copy_exp, 0, 1);
-			this.tableLayoutPanel2.Controls.Add(this.copy_std_label, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.copy_exp_label, 1, 1);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 49);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 72);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 3;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 92);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 99);
 			this.tableLayoutPanel2.TabIndex = 2;
 			// 
 			// label1
@@ -173,7 +172,7 @@
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label1.Location = new System.Drawing.Point(151, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(74, 30);
+			this.label1.Size = new System.Drawing.Size(74, 32);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Minimum size (prevbase):";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -182,9 +181,9 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label2.Location = new System.Drawing.Point(151, 30);
+			this.label2.Location = new System.Drawing.Point(151, 32);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(74, 30);
+			this.label2.Size = new System.Drawing.Size(74, 32);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Minimum size (prevbase):";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -193,9 +192,9 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label3.Location = new System.Drawing.Point(151, 60);
+			this.label3.Location = new System.Drawing.Point(151, 64);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(74, 32);
+			this.label3.Size = new System.Drawing.Size(74, 35);
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Stage names";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -208,7 +207,7 @@
             0,
             0,
             0});
-			this.prevbase_width_std.Location = new System.Drawing.Point(231, 7);
+			this.prevbase_width_std.Location = new System.Drawing.Point(231, 9);
 			this.prevbase_width_std.Maximum = new decimal(new int[] {
             176,
             0,
@@ -232,7 +231,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label4.Location = new System.Drawing.Point(304, 11);
+			this.label4.Location = new System.Drawing.Point(304, 13);
 			this.label4.Margin = new System.Windows.Forms.Padding(6);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(12, 13);
@@ -248,7 +247,7 @@
             0,
             0,
             0});
-			this.prevbase_height_std.Location = new System.Drawing.Point(325, 7);
+			this.prevbase_height_std.Location = new System.Drawing.Point(325, 9);
 			this.prevbase_height_std.Maximum = new decimal(new int[] {
             176,
             0,
@@ -276,7 +275,7 @@
             0,
             0,
             0});
-			this.prevbase_width_exp.Location = new System.Drawing.Point(231, 37);
+			this.prevbase_width_exp.Location = new System.Drawing.Point(231, 41);
 			this.prevbase_width_exp.Maximum = new decimal(new int[] {
             176,
             0,
@@ -300,7 +299,7 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label5.Location = new System.Drawing.Point(304, 41);
+			this.label5.Location = new System.Drawing.Point(304, 45);
 			this.label5.Margin = new System.Windows.Forms.Padding(6);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(12, 13);
@@ -316,7 +315,7 @@
             0,
             0,
             0});
-			this.prevbase_height_exp.Location = new System.Drawing.Point(325, 37);
+			this.prevbase_height_exp.Location = new System.Drawing.Point(325, 41);
 			this.prevbase_height_exp.Maximum = new decimal(new int[] {
             176,
             0,
@@ -344,7 +343,7 @@
             0,
             0,
             0});
-			this.frontstname_width.Location = new System.Drawing.Point(231, 69);
+			this.frontstname_width.Location = new System.Drawing.Point(231, 76);
 			this.frontstname_width.Maximum = new decimal(new int[] {
             208,
             0,
@@ -368,7 +367,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label6.Location = new System.Drawing.Point(304, 73);
+			this.label6.Location = new System.Drawing.Point(304, 80);
 			this.label6.Margin = new System.Windows.Forms.Padding(6);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(12, 13);
@@ -384,7 +383,7 @@
             0,
             0,
             0});
-			this.frontstname_height.Location = new System.Drawing.Point(325, 69);
+			this.frontstname_height.Location = new System.Drawing.Point(325, 76);
 			this.frontstname_height.Maximum = new decimal(new int[] {
             56,
             0,
@@ -412,46 +411,27 @@
 			this.copy_std.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.copy_std.Location = new System.Drawing.Point(3, 3);
 			this.copy_std.Name = "copy_std";
-			this.copy_std.Size = new System.Drawing.Size(14, 24);
+			this.copy_std.Size = new System.Drawing.Size(142, 26);
 			this.copy_std.TabIndex = 6;
+			this.copy_std.Text = "Keep stage icons\r\n(1-31, 50-59)";
 			this.copy_std.UseVisualStyleBackColor = true;
 			// 
 			// copy_exp
 			// 
 			this.copy_exp.AutoSize = true;
 			this.copy_exp.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.copy_exp.Location = new System.Drawing.Point(3, 33);
+			this.copy_exp.Location = new System.Drawing.Point(3, 35);
 			this.copy_exp.Name = "copy_exp";
-			this.copy_exp.Size = new System.Drawing.Size(14, 24);
+			this.copy_exp.Size = new System.Drawing.Size(142, 26);
 			this.copy_exp.TabIndex = 7;
+			this.copy_exp.Text = "Keep stage icons\r\n(32-49, 60+)";
 			this.copy_exp.UseVisualStyleBackColor = true;
-			// 
-			// copy_std_label
-			// 
-			this.copy_std_label.AutoSize = true;
-			this.copy_std_label.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.copy_std_label.Location = new System.Drawing.Point(23, 0);
-			this.copy_std_label.Name = "copy_std_label";
-			this.copy_std_label.Size = new System.Drawing.Size(122, 30);
-			this.copy_std_label.TabIndex = 8;
-			this.copy_std_label.Text = "Keep stage icons\r\n(1-31, 50-59)";
-			this.copy_std_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// copy_exp_label
-			// 
-			this.copy_exp_label.AutoSize = true;
-			this.copy_exp_label.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.copy_exp_label.Location = new System.Drawing.Point(23, 30);
-			this.copy_exp_label.Name = "copy_exp_label";
-			this.copy_exp_label.Size = new System.Drawing.Size(122, 30);
-			this.copy_exp_label.TabIndex = 9;
-			this.copy_exp_label.Text = "Keep stage icons\r\n(32-49, 60+)";
 			// 
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.flowLayoutPanel1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 141);
+			this.panel1.Location = new System.Drawing.Point(0, 171);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(392, 32);
 			this.panel1.TabIndex = 3;
@@ -506,11 +486,22 @@
 			this.panel2.Size = new System.Drawing.Size(24, 24);
 			this.panel2.TabIndex = 3;
 			// 
+			// addCodes
+			// 
+			this.addCodes.AutoSize = true;
+			this.addCodes.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.addCodes.Location = new System.Drawing.Point(3, 49);
+			this.addCodes.Name = "addCodes";
+			this.addCodes.Size = new System.Drawing.Size(320, 20);
+			this.addCodes.TabIndex = 4;
+			this.addCodes.Text = "Add codes from Codeset.txt to RSBE01.gct";
+			this.addCodes.UseVisualStyleBackColor = true;
+			// 
 			// Options
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(392, 173);
+			this.ClientSize = new System.Drawing.Size(392, 203);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.panel1);
@@ -558,11 +549,10 @@
 		private System.Windows.Forms.Button btnOkay;
 		private System.Windows.Forms.CheckBox copy_std;
 		private System.Windows.Forms.CheckBox copy_exp;
-		private System.Windows.Forms.Label copy_std_label;
-		private System.Windows.Forms.Label copy_exp_label;
 		private System.Windows.Forms.Button btnAbout;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.CheckBox addCodes;
 
 	}
 }
