@@ -55,6 +55,52 @@ namespace TransferSSS {
 			}
 		}
 
+		static void gct_add(string gct_file, string txt_file) {
+			FileStream gct = new FileStream(gct_file, FileMode.Open, FileAccess.Read);
+			byte[] gct_data = new byte[gct.Length - 12];
+			gct.Seek(4, SeekOrigin.Begin);
+			gct.Read(gct_data, 0, gct_data.Length);
+			gct.Close();
+
+			FileStream txt = new FileStream(txt_file, FileMode.Open, FileAccess.Read);
+			StreamReader reader = new StreamReader(txt);
+			string line;
+			while ((line = reader.ReadLine()) != null) {
+
+			}
+		}
+
+		#region Functions for txt->gct
+		static bool is_enabled_code(string line) {
+			if (line[0] != '*' || line[1] != ' ') {
+				return false;
+			} else {
+				return is_code(line.Substring(2));
+			}
+		}
+
+		static bool is_code(string line) {
+			if (line[0] == '*' && line[1] == ' ') {
+				return is_code(line.Substring(2));
+			}
+			int i;
+			for (i = 0; i < 17; i++) {
+				if (i == 8) {
+					if (line[i] != ' ') return false;
+				} else {
+					if (!isxdigit(line[i])) return false;
+				}
+			}
+			return true;
+		}
+
+		static bool isxdigit(char c) {
+			return (c >= '0' && c <= '9') ||
+					   (c >= 'a' && c <= 'f') ||
+					   (c >= 'A' && c <= 'F');
+		}
+		#endregion
+
 		static void sss_copy(ResourceNode fromBrres, ResourceNode toBrres, Options o) {
 			int prevbase_width_std = o.Prevbase_width_std; // Stages 1-31, 50-59
 			int prevbase_height_std = o.Prevbase_height_std; // Stages 1-31, 50-59
