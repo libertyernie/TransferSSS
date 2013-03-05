@@ -49,9 +49,9 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.btnOkay = new System.Windows.Forms.Button();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btnAbout = new System.Windows.Forms.Button();
+			this.btnCancel = new System.Windows.Forms.Button();
+			this.panel2 = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_width_std)).BeginInit();
@@ -62,7 +62,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.frontstname_height)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
-			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// common5_button
@@ -98,7 +97,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_label, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_change, 1, 1);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -137,7 +136,7 @@
 			// 
 			this.tableLayoutPanel2.ColumnCount = 6;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
@@ -159,7 +158,7 @@
 			this.tableLayoutPanel2.Controls.Add(this.copy_std_label, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.copy_exp_label, 1, 1);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 73);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 49);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 3;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -172,7 +171,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label1.Location = new System.Drawing.Point(119, 0);
+			this.label1.Location = new System.Drawing.Point(151, 0);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(74, 30);
 			this.label1.TabIndex = 0;
@@ -183,7 +182,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label2.Location = new System.Drawing.Point(119, 30);
+			this.label2.Location = new System.Drawing.Point(151, 30);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(74, 30);
 			this.label2.TabIndex = 1;
@@ -194,7 +193,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label3.Location = new System.Drawing.Point(119, 60);
+			this.label3.Location = new System.Drawing.Point(151, 60);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(74, 32);
 			this.label3.TabIndex = 2;
@@ -209,7 +208,7 @@
             0,
             0,
             0});
-			this.prevbase_width_std.Location = new System.Drawing.Point(199, 7);
+			this.prevbase_width_std.Location = new System.Drawing.Point(231, 7);
 			this.prevbase_width_std.Maximum = new decimal(new int[] {
             176,
             0,
@@ -221,7 +220,7 @@
             0,
             0});
 			this.prevbase_width_std.Name = "prevbase_width_std";
-			this.prevbase_width_std.Size = new System.Drawing.Size(80, 20);
+			this.prevbase_width_std.Size = new System.Drawing.Size(64, 20);
 			this.prevbase_width_std.TabIndex = 3;
 			this.prevbase_width_std.Value = new decimal(new int[] {
             88,
@@ -233,7 +232,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label4.Location = new System.Drawing.Point(288, 11);
+			this.label4.Location = new System.Drawing.Point(304, 11);
 			this.label4.Margin = new System.Windows.Forms.Padding(6);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(12, 13);
@@ -249,7 +248,7 @@
             0,
             0,
             0});
-			this.prevbase_height_std.Location = new System.Drawing.Point(309, 7);
+			this.prevbase_height_std.Location = new System.Drawing.Point(325, 7);
 			this.prevbase_height_std.Maximum = new decimal(new int[] {
             176,
             0,
@@ -261,7 +260,7 @@
             0,
             0});
 			this.prevbase_height_std.Name = "prevbase_height_std";
-			this.prevbase_height_std.Size = new System.Drawing.Size(80, 20);
+			this.prevbase_height_std.Size = new System.Drawing.Size(64, 20);
 			this.prevbase_height_std.TabIndex = 5;
 			this.prevbase_height_std.Value = new decimal(new int[] {
             88,
@@ -277,7 +276,7 @@
             0,
             0,
             0});
-			this.prevbase_width_exp.Location = new System.Drawing.Point(199, 37);
+			this.prevbase_width_exp.Location = new System.Drawing.Point(231, 37);
 			this.prevbase_width_exp.Maximum = new decimal(new int[] {
             176,
             0,
@@ -289,7 +288,7 @@
             0,
             0});
 			this.prevbase_width_exp.Name = "prevbase_width_exp";
-			this.prevbase_width_exp.Size = new System.Drawing.Size(80, 20);
+			this.prevbase_width_exp.Size = new System.Drawing.Size(64, 20);
 			this.prevbase_width_exp.TabIndex = 3;
 			this.prevbase_width_exp.Value = new decimal(new int[] {
             128,
@@ -301,7 +300,7 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label5.Location = new System.Drawing.Point(288, 41);
+			this.label5.Location = new System.Drawing.Point(304, 41);
 			this.label5.Margin = new System.Windows.Forms.Padding(6);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(12, 13);
@@ -317,7 +316,7 @@
             0,
             0,
             0});
-			this.prevbase_height_exp.Location = new System.Drawing.Point(309, 37);
+			this.prevbase_height_exp.Location = new System.Drawing.Point(325, 37);
 			this.prevbase_height_exp.Maximum = new decimal(new int[] {
             176,
             0,
@@ -329,7 +328,7 @@
             0,
             0});
 			this.prevbase_height_exp.Name = "prevbase_height_exp";
-			this.prevbase_height_exp.Size = new System.Drawing.Size(80, 20);
+			this.prevbase_height_exp.Size = new System.Drawing.Size(64, 20);
 			this.prevbase_height_exp.TabIndex = 5;
 			this.prevbase_height_exp.Value = new decimal(new int[] {
             128,
@@ -345,7 +344,7 @@
             0,
             0,
             0});
-			this.frontstname_width.Location = new System.Drawing.Point(199, 69);
+			this.frontstname_width.Location = new System.Drawing.Point(231, 69);
 			this.frontstname_width.Maximum = new decimal(new int[] {
             208,
             0,
@@ -357,7 +356,7 @@
             0,
             0});
 			this.frontstname_width.Name = "frontstname_width";
-			this.frontstname_width.Size = new System.Drawing.Size(80, 20);
+			this.frontstname_width.Size = new System.Drawing.Size(64, 20);
 			this.frontstname_width.TabIndex = 3;
 			this.frontstname_width.Value = new decimal(new int[] {
             104,
@@ -369,7 +368,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label6.Location = new System.Drawing.Point(288, 73);
+			this.label6.Location = new System.Drawing.Point(304, 73);
 			this.label6.Margin = new System.Windows.Forms.Padding(6);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(12, 13);
@@ -385,7 +384,7 @@
             0,
             0,
             0});
-			this.frontstname_height.Location = new System.Drawing.Point(309, 69);
+			this.frontstname_height.Location = new System.Drawing.Point(325, 69);
 			this.frontstname_height.Maximum = new decimal(new int[] {
             56,
             0,
@@ -397,7 +396,7 @@
             0,
             0});
 			this.frontstname_height.Name = "frontstname_height";
-			this.frontstname_height.Size = new System.Drawing.Size(80, 20);
+			this.frontstname_height.Size = new System.Drawing.Size(64, 20);
 			this.frontstname_height.TabIndex = 5;
 			this.frontstname_height.Value = new decimal(new int[] {
             56,
@@ -433,9 +432,9 @@
 			this.copy_std_label.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.copy_std_label.Location = new System.Drawing.Point(23, 0);
 			this.copy_std_label.Name = "copy_std_label";
-			this.copy_std_label.Size = new System.Drawing.Size(90, 30);
+			this.copy_std_label.Size = new System.Drawing.Size(122, 30);
 			this.copy_std_label.TabIndex = 8;
-			this.copy_std_label.Text = "Keep stage icons (1-31, 50-59)";
+			this.copy_std_label.Text = "Keep stage icons\r\n(1-31, 50-59)";
 			this.copy_std_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// copy_exp_label
@@ -444,15 +443,15 @@
 			this.copy_exp_label.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.copy_exp_label.Location = new System.Drawing.Point(23, 30);
 			this.copy_exp_label.Name = "copy_exp_label";
-			this.copy_exp_label.Size = new System.Drawing.Size(90, 30);
+			this.copy_exp_label.Size = new System.Drawing.Size(122, 30);
 			this.copy_exp_label.TabIndex = 9;
-			this.copy_exp_label.Text = "Keep stage icons (32-49, 60+)";
+			this.copy_exp_label.Text = "Keep stage icons\r\n(32-49, 60+)";
 			// 
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.flowLayoutPanel1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 165);
+			this.panel1.Location = new System.Drawing.Point(0, 141);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(392, 32);
 			this.panel1.TabIndex = 3;
@@ -460,6 +459,9 @@
 			// flowLayoutPanel1
 			// 
 			this.flowLayoutPanel1.Controls.Add(this.btnOkay);
+			this.flowLayoutPanel1.Controls.Add(this.btnCancel);
+			this.flowLayoutPanel1.Controls.Add(this.panel2);
+			this.flowLayoutPanel1.Controls.Add(this.btnAbout);
 			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -477,39 +479,40 @@
 			this.btnOkay.UseVisualStyleBackColor = true;
 			this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
 			// 
-			// menuStrip1
+			// btnAbout
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(392, 24);
-			this.menuStrip1.TabIndex = 1;
-			this.menuStrip1.Text = "menuStrip1";
+			this.btnAbout.Location = new System.Drawing.Point(117, 3);
+			this.btnAbout.Name = "btnAbout";
+			this.btnAbout.Size = new System.Drawing.Size(75, 23);
+			this.btnAbout.TabIndex = 1;
+			this.btnAbout.Text = "About";
+			this.btnAbout.UseVisualStyleBackColor = true;
+			this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
 			// 
-			// helpToolStripMenuItem
+			// btnCancel
 			// 
-			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-			this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-			this.helpToolStripMenuItem.Text = "Help";
+			this.btnCancel.Location = new System.Drawing.Point(228, 3);
+			this.btnCancel.Name = "btnCancel";
+			this.btnCancel.Size = new System.Drawing.Size(75, 23);
+			this.btnCancel.TabIndex = 2;
+			this.btnCancel.Text = "Cancel";
+			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
-			// aboutToolStripMenuItem
+			// panel2
 			// 
-			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.aboutToolStripMenuItem.Text = "About";
-			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+			this.panel2.Location = new System.Drawing.Point(198, 3);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(24, 24);
+			this.panel2.TabIndex = 3;
 			// 
 			// Options
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(392, 197);
+			this.ClientSize = new System.Drawing.Size(392, 173);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.panel1);
 			this.Name = "Options";
 			this.Text = "Options";
@@ -525,10 +528,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.frontstname_height)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.flowLayoutPanel1.ResumeLayout(false);
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -560,9 +560,9 @@
 		private System.Windows.Forms.CheckBox copy_exp;
 		private System.Windows.Forms.Label copy_std_label;
 		private System.Windows.Forms.Label copy_exp_label;
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+		private System.Windows.Forms.Button btnAbout;
+		private System.Windows.Forms.Button btnCancel;
+		private System.Windows.Forms.Panel panel2;
 
 	}
 }
