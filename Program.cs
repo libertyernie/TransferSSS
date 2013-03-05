@@ -6,6 +6,7 @@ using BrawlLib.IO;
 using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
+using System.Collections.Generic;
 
 namespace TransferSSS {
 	class Program {
@@ -29,6 +30,10 @@ namespace TransferSSS {
 					o.Prevbase_height_exp + "," +
 					o.Frontstname_width + "," +
 					o.Frontstname_height);*/
+
+				gct_add("codes/RSBE01.gct", "Codeset.txt");
+				Console.ReadLine();
+				return;
 
 				if (o.Common5 != null) {
 					ResourceNode fromBrres_common5 = NodeFactory.FromFile(null, o.Common5.FullName);
@@ -64,15 +69,40 @@ namespace TransferSSS {
 
 			FileStream txt = new FileStream(txt_file, FileMode.Open, FileAccess.Read);
 			StreamReader reader = new StreamReader(txt);
+			List<byte> txt_data = new List<byte>();
 			string line;
 			while ((line = reader.ReadLine()) != null) {
-
+				if (is_enabled_code(line)) {
+					string raw = line.Replace(" ", "").Replace("*", "");
+					for (int i = 0; i < 16; i += 2) {
+						txt_data.Add(Convert.ToByte(raw.Substring(i, 2), 16));
+					}
+				}
 			}
+
+			// testing
+			reader.Close(); txt.Close();
+			for (int i = 8; i > 0; i--) {
+				Console.WriteLine(gct_data[gct_data.Length - i]);
+			}
+			Console.WriteLine();
+			for (int i = 8; i > 0; i--) {
+				Console.WriteLine(txt_data[txt_data.Count - i]);
+			}
+
+			// check if these codes are already in the GCT (in the same order)
+			//TODO
+
+			FileStream gct_out = new FileStream("RSBE01.gct", FileMode.Create, FileAccess.Write);
+			gct_out.Write(txt_data.ToArray(), 0, txt_data.Count);
+			byte[] footer = { 0xf0, 0, 0, 0, 0, 0, 0, 0 };
+			gct_out.Write(footer, 0, footer.Length);
+			gct_out.Close();
 		}
 
 		#region Functions for txt->gct
 		static bool is_enabled_code(string line) {
-			if (line[0] != '*' || line[1] != ' ') {
+			if (line.Length < 2 || line[0] != '*' || line[1] != ' ') {
 				return false;
 			} else {
 				return is_code(line.Substring(2));
@@ -234,21 +264,6 @@ namespace TransferSSS {
 			}
 			#endregion
 
-			#region Copy 3D models
-			/*ResourceNode toBrres_mdl = toBrres_file.FindChild("3DModels(NW4R)", false);
-			ResourceNode fromBrres_mdl = fromBrres_file.FindChild("3DModels(NW4R)", false);
-			foreach (ResourceNode from in fromBrres_mdl.Children) {
-				if (from.Name != "MenSelmapPos") {
-					ResourceNode to = toBrres_mdl.FindChild(from.Name, false);
-					if (to == null) {
-						MessageBox.Show("No " + from.Name + " model in destination");
-					} else {
-						copyTexture(from, to);
-					}
-				}
-			}*/
-			#endregion
-//			Console.ReadLine();
 			progress.Dispose();
 		}
 
