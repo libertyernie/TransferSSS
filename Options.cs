@@ -13,7 +13,7 @@ namespace TransferSSS {
 		private FileInfo _common5, _mu_menumain;
 		public FileInfo Common5 {
 			get {
-				return _common5;
+				return (common5_label.Checked ? _common5 : null);
 			}
 			set {
 				if (value != null && value.Exists) {
@@ -32,7 +32,7 @@ namespace TransferSSS {
 		}
 		public FileInfo Mu_menumain {
 			get {
-				return _mu_menumain;
+				return (mu_menumain_label.Checked ? _mu_menumain : null);
 			}
 			set {
 				if (value != null && value.Exists) {
@@ -164,6 +164,10 @@ namespace TransferSSS {
 
 		private void btnCancel_Click(object sender, EventArgs e) {
 			Close();
+		}
+
+		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
+
 		}
 	}
 }
