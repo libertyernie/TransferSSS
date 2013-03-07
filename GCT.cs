@@ -9,8 +9,8 @@ namespace TransferSSS {
 		public static void add(string gct_file, string txt_file) {
 			FileStream gct = new FileStream(gct_file, FileMode.Open, FileAccess.Read);
 			byte[] gct_data = new byte[gct.Length - 16];
-			gct.Seek(8, SeekOrigin.Begin); // Skip eight-byte GCT header
-			gct.Read(gct_data, 0, gct_data.Length); // Also skip eight-byte GCT footer
+			gct.Seek(8, SeekOrigin.Begin); // DON'T skip eight-byte GCT header
+			gct.Read(gct_data, 0, gct_data.Length); // DO skip eight-byte GCT footer
 			gct.Close();
 
 			FileStream txt = new FileStream(txt_file, FileMode.Open, FileAccess.Read);
@@ -51,6 +51,7 @@ namespace TransferSSS {
 			Console.WriteLine("gct_data,txt_data " + first_index_of_subsequence(gct_data, txt_data));
 
 			FileStream gct_out = new FileStream("RSBE01.gct", FileMode.Create, FileAccess.Write);
+			gct_out.Write(gct_data, 0, gct_data.Length);
 			gct_out.Write(txt_data, 0, txt_data.Length);
 			byte[] footer = { 0xf0, 0, 0, 0, 0, 0, 0, 0 };
 			gct_out.Write(footer, 0, footer.Length);
