@@ -26,7 +26,7 @@ namespace TransferSSS {
 					o.Frontstname_width + "," +
 					o.Frontstname_height);*/
 
-				GCT.add("codes/RSBE01.gct", "Codeset.txt");
+				GCT.add("codes/RSBE01.gct", "Codeset.txt", "RSBE01.gct");
 				Console.ReadLine();
 				return;
 
