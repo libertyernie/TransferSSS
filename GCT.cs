@@ -6,7 +6,7 @@ using System.IO;
 
 namespace TransferSSS {
 	class GCT {
-		public static void gct_add(string gct_file, string txt_file) {
+		public static void add(string gct_file, string txt_file) {
 			FileStream gct = new FileStream(gct_file, FileMode.Open, FileAccess.Read);
 			byte[] gct_data = new byte[gct.Length - 16];
 			gct.Seek(8, SeekOrigin.Begin); // Skip eight-byte GCT header
@@ -43,12 +43,12 @@ namespace TransferSSS {
 			byte[] b = { 0, 0, 4, 13, 11 };
 			byte[] c = { 4, 13, 55 };
 			byte[] d = { 0, 0, 4, 13 };
-			Console.WriteLine("b,a " + byte_array_contains(b, a));
-			Console.WriteLine("c,a " + byte_array_contains(c, a));
-			Console.WriteLine("d,a " + byte_array_contains(d, a));
-			Console.WriteLine("b,c " + byte_array_contains(b, c));
-			Console.WriteLine("b,d " + byte_array_contains(b, d));
-			Console.WriteLine("gct_data,txt_data " + byte_array_contains(gct_data, txt_data));
+			Console.WriteLine("b,a " + first_index_of_subsequence(b, a));
+			Console.WriteLine("c,a " + first_index_of_subsequence(c, a));
+			Console.WriteLine("d,a " + first_index_of_subsequence(d, a));
+			Console.WriteLine("b,c " + first_index_of_subsequence(b, c));
+			Console.WriteLine("b,d " + first_index_of_subsequence(b, d));
+			Console.WriteLine("gct_data,txt_data " + first_index_of_subsequence(gct_data, txt_data));
 
 			FileStream gct_out = new FileStream("RSBE01.gct", FileMode.Create, FileAccess.Write);
 			gct_out.Write(txt_data, 0, txt_data.Length);
@@ -58,29 +58,22 @@ namespace TransferSSS {
 		}
 
 		#region Utility methods
-		public static int byte_array_contains(byte[] large, byte[] small) {
-			int index_in_large = 0;
-			int index_in_small = 0;
-			int potential_position_of_small_in_large = -1; // will be overwritten during search
-			while (index_in_large < large.Length) { // Could be improved - could stop once there is too little space left for result to be true
-				if (large[index_in_large] == small[index_in_small]) {
-					if (potential_position_of_small_in_large < 0) {
-						potential_position_of_small_in_large = index_in_large;
-					}
-					index_in_small++;
-					if (index_in_small == small.Length) {
-						return potential_position_of_small_in_large;
-					}
-				} else {
-					index_in_small = 0;
-					if (potential_position_of_small_in_large >= 0) {
-						index_in_large = potential_position_of_small_in_large; // go back and look again from start
-						potential_position_of_small_in_large = -1;
-					}
+		public static int first_index_of_subsequence(byte[] large, byte[] small) {
+			for (int i = 0; i < (large.Length - small.Length + 1); i++) {
+				if (subsequence_equal(large, i, small)) {
+					return i;
 				}
-				index_in_large++;
 			}
-			return -1; // not found
+			return -1;
+		}
+
+		public static bool subsequence_equal(byte[] large, int offset, byte[] small) {
+			for (int i = 0; i < small.Length; i++) {
+				if (small[i] != large[i + offset]) {
+					return false;
+				}
+			}
+			return true;
 		}
 
 		public static bool isxdigit(char c) {
