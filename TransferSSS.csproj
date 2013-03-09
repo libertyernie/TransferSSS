@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BrawlLib, Version=0.14.4811.29384, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\website-php\brawl\brawllib-jan2013\BrawlLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -56,13 +60,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongTitles.cs" />
     <Compile Include="SSS.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BrawlLib\BrawlLib.csproj">
-      <Project>{462D0BBF-CE82-405B-8848-2F91E9E14C55}</Project>
-      <Name>BrawlLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Options.resx">
