@@ -102,8 +102,11 @@ namespace TransferSSS {
 
 			Common5 = Mu_menumain = null;
 
-			string[] common5_folders = { "/private/wii/app/RSBE/pf/system", "/brawlmods/textures/system",
-								"/brawlmods/vbrawl/system", "/brawlmods/brawlminus/system" };
+			string[] common5_folders = {
+								"private/wii/app/RSBE/pf/system", "brawlmods/textures/system",
+								"brawlmods/vbrawl/system", "brawlmods/brawlminus/system",
+								"/private/wii/app/RSBE/pf/system", "/brawlmods/textures/system",
+								"/brawlmods/vbrawl/system", "/brawlmods/brawlminus/system"};
 			foreach (string folder in common5_folders) {
 				string file_string = folder + "/common5.pac";
 				FileInfo file = new FileInfo(file_string);
@@ -113,8 +116,11 @@ namespace TransferSSS {
 				}
 			}
 
-			string[] mu_menumain_folders = { "/private/wii/app/RSBE/pfmenu2", "/private/wii/app/RSBE/pf/menu2",
-								"/brawlmods/textures/menu2", "/brawlmods/brawlminus/menu2" };
+			string[] mu_menumain_folders = {
+								"private/wii/app/RSBE/pfmenu2", "private/wii/app/RSBE/pf/menu2",
+								"brawlmods/textures/menu2", "brawlmods/brawlminus/menu2",
+								"/private/wii/app/RSBE/pfmenu2", "/private/wii/app/RSBE/pf/menu2",
+								"/brawlmods/textures/menu2", "/brawlmods/brawlminus/menu2"};
 			foreach (string folder in mu_menumain_folders) {
 				string file_string = folder + "/mu_menumain.pac";
 				FileInfo file = new FileInfo(file_string);
