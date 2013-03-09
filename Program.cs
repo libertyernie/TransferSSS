@@ -26,9 +26,7 @@ namespace TransferSSS {
 					o.Frontstname_width + "," +
 					o.Frontstname_height);*/
 
-				GCT.add("codes/RSBE01.gct", "Codeset.txt", "RSBE01.gct");
-				Console.ReadLine();
-				return;
+				if (o.AddCodes) GCT.add("codes/RSBE01.gct", "Codeset.txt", "RSBE01.gct");
 
 				if (o.Common5 != null) {
 					ResourceNode fromBrres_common5 = NodeFactory.FromFile(null, o.Common5.FullName);
