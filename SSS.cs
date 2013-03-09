@@ -91,8 +91,9 @@ namespace TransferSSS {
 									g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
 									g.DrawImage(source, 0, 0, frontstname_width, frontstname_height);
 								}
-								FileMap map = i4_converter.EncodeTEX0Texture(thumbnail, 1);
-								toBrres_frontstname.ReplaceRaw(map);
+								//FileMap map = i4_converter.EncodeTEX0Texture(thumbnail, 1);
+								//toBrres_frontstname.ReplaceRaw(map);
+								toBrres_frontstname.Replace(thumbnail);
 							}
 						}
 					}
@@ -110,6 +111,7 @@ namespace TransferSSS {
 
 			#region MenSelchrMark / SeriesIcon
 			if (toBrres_usesSeriesIcon) {
+				//TODO check if should be copied (# range)
 				// The common5 we're copying *to* uses SeriesIcon.
 				for (int i = 1; i < 81; i++) {
 					string num = i.ToString("00");
