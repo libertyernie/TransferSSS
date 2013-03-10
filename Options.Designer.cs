@@ -27,6 +27,9 @@
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.addCodes = new System.Windows.Forms.CheckBox();
 			this.mu_menumain_change = new System.Windows.Forms.Button();
+			this.updateSongTitles = new System.Windows.Forms.CheckBox();
+			this.common5_label = new System.Windows.Forms.CheckBox();
+			this.mu_menumain_label = new System.Windows.Forms.CheckBox();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
@@ -49,9 +52,7 @@
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.btnAbout = new System.Windows.Forms.Button();
-			this.updateSongTitles = new System.Windows.Forms.CheckBox();
-			this.common5_label = new System.Windows.Forms.CheckBox();
-			this.mu_menumain_label = new System.Windows.Forms.CheckBox();
+			this.rsbe01_button = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_width_std)).BeginInit();
@@ -88,6 +89,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.updateSongTitles, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.common5_label, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_label, 0, 3);
+			this.tableLayoutPanel1.Controls.Add(this.rsbe01_button, 1, 0);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -98,7 +100,6 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 96);
 			this.tableLayoutPanel1.TabIndex = 1;
-			this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
 			// 
 			// addCodes
 			// 
@@ -107,9 +108,9 @@
 			this.addCodes.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.addCodes.Location = new System.Drawing.Point(3, 3);
 			this.addCodes.Name = "addCodes";
-			this.addCodes.Size = new System.Drawing.Size(230, 17);
+			this.addCodes.Size = new System.Drawing.Size(74, 17);
 			this.addCodes.TabIndex = 4;
-			this.addCodes.Text = "Add codes from Codeset.txt to RSBE01.gct";
+			this.addCodes.Text = "addCodes";
 			this.addCodes.UseVisualStyleBackColor = true;
 			// 
 			// mu_menumain_change
@@ -123,6 +124,43 @@
 			this.mu_menumain_change.Text = "Change";
 			this.mu_menumain_change.UseVisualStyleBackColor = true;
 			this.mu_menumain_change.Click += new System.EventHandler(this.mu_menumain_change_Click);
+			// 
+			// updateSongTitles
+			// 
+			this.updateSongTitles.AutoSize = true;
+			this.updateSongTitles.Checked = true;
+			this.updateSongTitles.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.updateSongTitles.Location = new System.Drawing.Point(3, 27);
+			this.updateSongTitles.Name = "updateSongTitles";
+			this.updateSongTitles.Size = new System.Drawing.Size(292, 17);
+			this.updateSongTitles.TabIndex = 5;
+			this.updateSongTitles.Text = "Add song titles from music.csv to info and mu_menumain";
+			this.updateSongTitles.UseVisualStyleBackColor = true;
+			// 
+			// common5_label
+			// 
+			this.common5_label.AutoSize = true;
+			this.common5_label.Checked = true;
+			this.common5_label.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.common5_label.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.common5_label.Location = new System.Drawing.Point(3, 50);
+			this.common5_label.Name = "common5_label";
+			this.common5_label.Size = new System.Drawing.Size(320, 18);
+			this.common5_label.TabIndex = 6;
+			this.common5_label.Text = "common5_label";
+			this.common5_label.UseVisualStyleBackColor = true;
+			// 
+			// mu_menumain_label
+			// 
+			this.mu_menumain_label.AutoSize = true;
+			this.mu_menumain_label.Checked = true;
+			this.mu_menumain_label.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.mu_menumain_label.Location = new System.Drawing.Point(3, 74);
+			this.mu_menumain_label.Name = "mu_menumain_label";
+			this.mu_menumain_label.Size = new System.Drawing.Size(122, 17);
+			this.mu_menumain_label.TabIndex = 7;
+			this.mu_menumain_label.Text = "mu_menumain_label";
+			this.mu_menumain_label.UseVisualStyleBackColor = true;
 			// 
 			// openFileDialog1
 			// 
@@ -480,42 +518,17 @@
 			this.btnAbout.UseVisualStyleBackColor = true;
 			this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
 			// 
-			// updateSongTitles
+			// rsbe01_button
 			// 
-			this.updateSongTitles.AutoSize = true;
-			this.updateSongTitles.Checked = true;
-			this.updateSongTitles.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.updateSongTitles.Location = new System.Drawing.Point(3, 27);
-			this.updateSongTitles.Name = "updateSongTitles";
-			this.updateSongTitles.Size = new System.Drawing.Size(292, 17);
-			this.updateSongTitles.TabIndex = 5;
-			this.updateSongTitles.Text = "Add song titles from music.csv to info and mu_menumain";
-			this.updateSongTitles.UseVisualStyleBackColor = true;
-			// 
-			// common5_label
-			// 
-			this.common5_label.AutoSize = true;
-			this.common5_label.Checked = true;
-			this.common5_label.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.common5_label.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.common5_label.Location = new System.Drawing.Point(3, 50);
-			this.common5_label.Name = "common5_label";
-			this.common5_label.Size = new System.Drawing.Size(320, 18);
-			this.common5_label.TabIndex = 6;
-			this.common5_label.Text = "common5_label";
-			this.common5_label.UseVisualStyleBackColor = true;
-			// 
-			// mu_menumain_label
-			// 
-			this.mu_menumain_label.AutoSize = true;
-			this.mu_menumain_label.Checked = true;
-			this.mu_menumain_label.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.mu_menumain_label.Location = new System.Drawing.Point(3, 74);
-			this.mu_menumain_label.Name = "mu_menumain_label";
-			this.mu_menumain_label.Size = new System.Drawing.Size(122, 17);
-			this.mu_menumain_label.TabIndex = 7;
-			this.mu_menumain_label.Text = "mu_menumain_label";
-			this.mu_menumain_label.UseVisualStyleBackColor = true;
+			this.rsbe01_button.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.rsbe01_button.Location = new System.Drawing.Point(326, 0);
+			this.rsbe01_button.Margin = new System.Windows.Forms.Padding(0);
+			this.rsbe01_button.Name = "rsbe01_button";
+			this.rsbe01_button.Size = new System.Drawing.Size(66, 24);
+			this.rsbe01_button.TabIndex = 8;
+			this.rsbe01_button.Text = "Change";
+			this.rsbe01_button.UseVisualStyleBackColor = true;
+			this.rsbe01_button.Click += new System.EventHandler(this.rsbe01_button_Click);
 			// 
 			// Options
 			// 
@@ -574,6 +587,7 @@
 		private System.Windows.Forms.CheckBox updateSongTitles;
 		private System.Windows.Forms.CheckBox common5_label;
 		private System.Windows.Forms.CheckBox mu_menumain_label;
+		private System.Windows.Forms.Button rsbe01_button;
 
 	}
 }

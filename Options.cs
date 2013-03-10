@@ -186,6 +186,15 @@ namespace TransferSSS {
 			}
 		}
 
+		private void rsbe01_button_Click(object sender, EventArgs e) {
+			if (RSBE01 != null) {
+				openFileDialog1.InitialDirectory = RSBE01.DirectoryName;
+			}
+			if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+				RSBE01 = new FileInfo(openFileDialog1.FileName);
+			}
+		}
+
 		private void btnOkay_Click(object sender, EventArgs e) {
 			DialogResult = DialogResult.OK;
 			Close();
@@ -203,10 +212,6 @@ namespace TransferSSS {
 
 		private void btnCancel_Click(object sender, EventArgs e) {
 			Close();
-		}
-
-		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
-
 		}
 	}
 }
