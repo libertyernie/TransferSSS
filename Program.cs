@@ -28,7 +28,7 @@ namespace TransferSSS {
 
 				ResourceNode toBrres_node = NodeFactory.FromFile(null, "MiscData[80].brres");
 
-				if (o.AddCodes) GCT.add(o.RSBE01.FullName, "Codeset.txt", "RSBE01.gct");
+				if (o.RSBE01 != null) GCT.add(o.RSBE01.FullName, "Codeset.txt", "RSBE01.gct");
 
 				if (o.Copy_std || o.Copy_exp) {
 					if (o.Common5 != null) {

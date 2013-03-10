@@ -10,7 +10,7 @@ using System.IO;
 
 namespace TransferSSS {
 	public partial class Options : Form {
-		private FileInfo _common5, _mu_menumain, _rsbe01;
+		private FileInfo _common5, _mu_menumain, _rsbe01, _info;
 		public FileInfo Common5 {
 			get {
 				return (common5_label.Checked ? _common5 : null);
@@ -68,6 +68,25 @@ namespace TransferSSS {
 				}
 			}
 		}
+		public FileInfo Info {
+			get {
+				return (updateSongTitles.Checked ? _info : null);
+			}
+			set {
+				if (value != null && value.Exists) {
+					_info = value;
+				} else {
+					_info = null;
+				}
+				if (_info != null) {
+					updateSongTitles.Text = _info.FullName;
+					updateSongTitles.Enabled = true;
+				} else {
+					updateSongTitles.Text = "No info.pac selected";
+					updateSongTitles.Enabled = false;
+				}
+			}
+		}
 
 		public int Prevbase_width_std {
 			get {
@@ -110,16 +129,11 @@ namespace TransferSSS {
 				return copy_exp.Checked;
 			}
 		}
-		public bool AddCodes {
-			get {
-				return addCodes.Checked;
-			}
-		}
 
 		public Options() {
 			InitializeComponent();
 
-			Common5 = Mu_menumain = RSBE01 = null;
+			Common5 = Mu_menumain = RSBE01 = Info = null;
 
 			string[] common5_folders = {
 								"private/wii/app/RSBE/pf/system", "brawlmods/textures/system",
@@ -162,6 +176,20 @@ namespace TransferSSS {
 					break;
 				}
 			}
+
+			string[] info_folders = {
+								"private/wii/app/RSBE/pf/info2",
+								"brawlmods/music",
+								"/private/wii/app/RSBE/pf/info2",
+								"/brawlmods/music",};
+			foreach (string folder in info_folders) {
+				string file_string = folder + "/info.pac";
+				FileInfo file = new FileInfo(file_string);
+				if (file.Exists) {
+					Info = file;
+					break;
+				}
+			}
 		}
 
 		private void common5_button_Click(object sender, EventArgs e) {
@@ -192,6 +220,15 @@ namespace TransferSSS {
 			}
 			if (openFileDialog1.ShowDialog() == DialogResult.OK) {
 				RSBE01 = new FileInfo(openFileDialog1.FileName);
+			}
+		}
+
+		private void info_button_Click(object sender, EventArgs e) {
+			if (Info != null) {
+				openFileDialog1.InitialDirectory = Info.DirectoryName;
+			}
+			if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+				Info = new FileInfo(openFileDialog1.FileName);
 			}
 		}
 
