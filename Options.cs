@@ -10,7 +10,7 @@ using System.IO;
 
 namespace TransferSSS {
 	public partial class Options : Form {
-		private FileInfo _common5, _mu_menumain;
+		private FileInfo _common5, _mu_menumain, _rsbe01;
 		public FileInfo Common5 {
 			get {
 				return (common5_label.Checked ? _common5 : null);
@@ -40,12 +40,31 @@ namespace TransferSSS {
 				} else {
 					_mu_menumain = null;
 				}
-				if (_common5 != null) {
+				if (_mu_menumain != null) {
 					mu_menumain_label.Text = _mu_menumain.FullName;
 					mu_menumain_label.Enabled = true;
 				} else {
 					mu_menumain_label.Text = "No mu_menumain selected";
 					mu_menumain_label.Enabled = false;
+				}
+			}
+		}
+		public FileInfo RSBE01 {
+			get {
+				return (addCodes.Checked ? _rsbe01 : null);
+			}
+			set {
+				if (value != null && value.Exists) {
+					_rsbe01 = value;
+				} else {
+					_rsbe01 = null;
+				}
+				if (_rsbe01 != null) {
+					addCodes.Text = "Add from Codeset.txt to "+_rsbe01.FullName;
+					addCodes.Enabled = true;
+				} else {
+					addCodes.Text = "No RSBE01.gct selected";
+					addCodes.Enabled = false;
 				}
 			}
 		}
@@ -100,7 +119,7 @@ namespace TransferSSS {
 		public Options() {
 			InitializeComponent();
 
-			Common5 = Mu_menumain = null;
+			Common5 = Mu_menumain = RSBE01 = null;
 
 			string[] common5_folders = {
 								"private/wii/app/RSBE/pf/system", "brawlmods/textures/system",
@@ -126,6 +145,20 @@ namespace TransferSSS {
 				FileInfo file = new FileInfo(file_string);
 				if (file.Exists) {
 					Mu_menumain = file;
+					break;
+				}
+			}
+
+			string[] rsbe01_folders = {
+								"data/gecko/codes", "codes",
+								"brawlmods/vbrawl", "brawlmods/brawlminus",
+								"/data/gecko/codes", "/codes",
+								"/brawlmods/vbrawl", "/brawlmods/brawlminus",};
+			foreach (string folder in rsbe01_folders) {
+				string file_string = folder + "/RSBE01.gct";
+				FileInfo file = new FileInfo(file_string);
+				if (file.Exists) {
+					RSBE01 = file;
 					break;
 				}
 			}
