@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace TransferSSS {
 	class SongTitles {
+		public static void copy(MSBinNode from, MSBinNode to) {
+			for (int i = 0; i < from._strings.Count; i++) {
+				string custom = from._strings[i];
+				if (custom != originalTitles[i]) {
+					to._strings[i] = from._strings[i];
+				}
+			}
+		}
+
 		public static string[] originalTitles = {
 			"Super Smash Bros. Brawl Main Theme",
 			"Tournament Grid",
