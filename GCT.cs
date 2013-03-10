@@ -9,7 +9,6 @@ using System.Windows.Forms;
 namespace TransferSSS {
 	class GCT {
 		public static void add(string gct_file, string txt_file, string output_file) {
-			Stopwatch s = Stopwatch.StartNew();
 			FileStream gct = new FileStream(gct_file, FileMode.Open, FileAccess.Read);
 			byte[] gct_data = new byte[gct.Length - 16];
 			gct.Seek(8, SeekOrigin.Begin); // DON'T skip eight-byte GCT header
@@ -62,7 +61,6 @@ namespace TransferSSS {
 				byte[] footer = { 0xf0, 0, 0, 0, 0, 0, 0, 0 };
 				gct_out.Write(footer, 0, footer.Length);
 				gct_out.Close();
-				MessageBox.Show("GCT file written to " + output_file);
 			}
 		}
 

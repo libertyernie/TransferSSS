@@ -20,7 +20,7 @@ namespace TransferSSS {
 			bool copy_std = o.Copy_std;
 			bool copy_exp = o.Copy_exp;
 
-			ProgressWindow progress = new ProgressWindow();
+			ProgressWindow progress = new ProgressWindow(null, "Merging...", "Copying icons into the new MiscData[80]", false);
 			progress.Begin(0, 341, 0);
 
 			// Icons will be copied directly. MenSelchrMark will have special logic. MenSelmapMark will be ignored.
@@ -144,6 +144,9 @@ namespace TransferSSS {
 					}
 			}
 			#endregion
+
+			progress.Caption = "Closing temporary files...";
+			progress.Update(341);
 
 			toBrres.Rebuild();
 			progress.Dispose();
