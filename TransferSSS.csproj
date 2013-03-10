@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BrawlLib, Version=0.14.4811.29384, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BrawlLib, Version=0.14.4796.36552, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Desktop\website-php\brawl\brawllib-jan2013\BrawlLib.dll</HintPath>
     </Reference>
