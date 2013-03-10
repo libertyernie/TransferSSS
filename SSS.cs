@@ -25,8 +25,9 @@ namespace TransferSSS {
 
 			// Icons will be copied directly. MenSelchrMark will have special logic. MenSelmapMark will be ignored.
 			int[] seriesicon_mappings = { -1, 20, 20, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 8, 9, 11, 18, 15, 12, 14, 13, 1, 10, 21, 17, 19, 22, 23,
-												-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-												3, 5, 2, 10, 6, 1, 7, 9, 4, 8};
+												32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49,
+												3, 5, 2, 10, 6, 1, 7, 9, 4, 8,
+												60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80};
 
 			ResourceNode toBrres_tex = toBrres.FindChild("Textures(NW4R)", false);
 			ResourceNode fromBrres_tex = fromBrres.FindChild("Textures(NW4R)", false);
@@ -114,34 +115,42 @@ namespace TransferSSS {
 				//TODO check if should be copied (# range)
 				// The common5 we're copying *to* uses SeriesIcon.
 				for (int i = 1; i < 81; i++) {
-					string num = i.ToString("00");
-					if (fromBrres_usesSeriesIcon) {
-						// Direct copy
-						copyTexture(fromBrres_tex, "SeriesIcon." + num,
-							toBrres_tex, "SeriesIcon." + num);
+					bool copy;
+					if ((i < 32) || ((i >= 50) && (i < 60))) {
+						copy = copy_std;
 					} else {
-						// The common5 we're copying *from* uses MenSelchrMark
-						if (i < seriesicon_mappings.Length) {
-							copyTexture(fromBrres_tex, "MenSelchrMark." + seriesicon_mappings[i].ToString("00"),
+						copy = copy_exp;
+					}
+					if (copy) {
+						string num = i.ToString("00");
+						if (fromBrres_usesSeriesIcon) {
+							// Direct copy
+							copyTexture(fromBrres_tex, "SeriesIcon." + num,
 								toBrres_tex, "SeriesIcon." + num);
+						} else {
+							// The common5 we're copying *from* uses MenSelchrMark
+							if (i < seriesicon_mappings.Length) {
+								copyTexture(fromBrres_tex, "MenSelchrMark." + seriesicon_mappings[i].ToString("00"),
+									toBrres_tex, "SeriesIcon." + num);
+							}
 						}
 					}
 					progress.Update(237 + i);
 				}
 			} else {
-				// The common5 we're copying *to* uses MenSelchrMark. Skip #16 (not present in the SSS).
-				for (int i = 1; i < 24; i++) if (i != 16) {
-						if (fromBrres_usesSeriesIcon) {
-							// The common5 we're copying *from* uses SeriesIcon - we can't copy all the icons, because there aren't as many
-							copyTexture(fromBrres_tex, "SeriesIcon." + i.ToString("00"),
-								toBrres_tex, "MenSelchrMark." + firstIndexOf(seriesicon_mappings, i).ToString("00"));
-						} else {
-							// Direct copy
-							copyTexture(fromBrres_tex, "MenSelchrMark." + i.ToString("00"),
-								toBrres_tex, "MenSelchrMark." + i.ToString("00"));
-						}
-						progress.Update(247 + 3 * i);
+				// The common5 we're copying *to* uses MenSelchrMark. Skip if not present in the SSS.
+				for (int i = 1; i < 81; i++) {
+					if (fromBrres_usesSeriesIcon) {
+						// The common5 we're copying *from* uses SeriesIcon - we can't copy all the icons, because there aren't as many
+						copyTexture(fromBrres_tex, "SeriesIcon." + i.ToString("00"),
+							toBrres_tex, "MenSelchrMark." + firstIndexOf(seriesicon_mappings, i).ToString("00"));
+					} else {
+						// Direct copy
+						copyTexture(fromBrres_tex, "MenSelchrMark." + i.ToString("00"),
+							toBrres_tex, "MenSelchrMark." + i.ToString("00"));
 					}
+					progress.Update(247 + 3 * i);
+				}
 			}
 			#endregion
 
