@@ -70,27 +70,31 @@ namespace TransferSSS {
 					}
 				}
 
-				if (o.Copy_std || o.Copy_exp) {
-					if (o.Common5 != null) {
-						ResourceNode fromBrres_common5 = NodeFactory.FromFile(null, o.Common5.FullName);
-						ResourceNode fromBrres_common5_node = fromBrres_common5.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
-						SSS.copy(fromBrres_common5_node, toBrres_node, o);
-						fromBrres_common5_node.ReplaceRaw(toBrres_node.WorkingSource.Address, toBrres_node.WorkingSource.Length);
-						fromBrres_common5.Merge();
-						fromBrres_common5.Export(o.Common5.Name);
-						filesCreated.Add(o.Common5.Name);
-					}
-					if (o.Mu_menumain != null) {
-						ResourceNode fromBrres_mu_menumain = NodeFactory.FromFile(null, o.Mu_menumain.FullName);
-						ResourceNode fromBrres_mu_menumain_node = fromBrres_mu_menumain.FindChild("MiscData[0]", false);
-						if (o.Common5 == null) {
-							SSS.copy(fromBrres_mu_menumain_node, toBrres_node, o);
+				try {
+					if (o.Copy_std || o.Copy_exp) {
+						if (o.Common5 != null) {
+							ResourceNode fromBrres_common5 = NodeFactory.FromFile(null, o.Common5.FullName);
+							ResourceNode fromBrres_common5_node = fromBrres_common5.FindChild("sc_selmap_en", false).FindChild("MiscData[80]", false);
+							SSS.copy(fromBrres_common5_node, toBrres_node, o);
+							fromBrres_common5_node.ReplaceRaw(toBrres_node.WorkingSource.Address, toBrres_node.WorkingSource.Length);
+							fromBrres_common5.Merge();
+							fromBrres_common5.Export("common5.pac");
+							filesCreated.Add("common5.pac");
 						}
-						fromBrres_mu_menumain_node.ReplaceRaw(toBrres_node.WorkingSource.Address, toBrres_node.WorkingSource.Length);
-						fromBrres_mu_menumain.Merge();
-						fromBrres_mu_menumain.Export(o.Mu_menumain.Name);
-						filesCreated.Add(o.Mu_menumain.Name);
+						if (o.Mu_menumain != null) {
+							ResourceNode fromBrres_mu_menumain = NodeFactory.FromFile(null, o.Mu_menumain.FullName);
+							ResourceNode fromBrres_mu_menumain_node = fromBrres_mu_menumain.FindChild("MiscData[0]", false);
+							if (o.Common5 == null) {
+								SSS.copy(fromBrres_mu_menumain_node, toBrres_node, o);
+							}
+							fromBrres_mu_menumain_node.ReplaceRaw(toBrres_node.WorkingSource.Address, toBrres_node.WorkingSource.Length);
+							fromBrres_mu_menumain.Merge();
+							fromBrres_mu_menumain.Export("mu_menumain.pac");
+							filesCreated.Add("mu_menumain.pac");
+						}
 					}
+				} catch (KeyNotFoundException) {
+					MessageBox.Show("BrawlLib could not put the file back together. The MiscData[80] may be corrupted, or you may be using an older version of BrawlLib.");
 				}
 
 				string msg = "Files created:\n";
