@@ -46,25 +46,28 @@ namespace TransferSSS {
 					string info_filename = o.Info.FullName;
 					ResourceNode info = NodeFactory.FromFile(null, info_filename);
 					MSBinNode info140 = info.FindChild("MiscData[140]", false) as MSBinNode;
+					bool changed;
 					using (MSBinNode custom140 = NodeFactory.FromFile(null, "MiscData[140].msbin") as MSBinNode) {
-						SongTitles.copy(custom140, info140);
+						changed = SongTitles.copy(custom140, info140);
 					}
-					info.Export(o.Info.Name);
-					filesCreated.Add(o.Info.Name);
+					if (changed) {
+						info.Export(o.Info.Name);
+						filesCreated.Add(o.Info.Name);
 
-					FileInfo[] other_files = new FileInfo[4];
-					string[] append = { "_boss_battle", "_corps", "_homerun", "_training" };
-					for (int i = 0; i < 4; i++) {
-						other_files[i] = new FileInfo(info_filename.Replace("info.pac", "info" + append[i] + ".pac"));
-					}
-					DataSource info140source = info140.OriginalSource;
-					foreach (FileInfo file in other_files) {
-						Console.WriteLine(file.FullName);
-						if (file.Exists) {
-							using (ResourceNode root = NodeFactory.FromFile(null, file.FullName)) {
-								root.FindChild("MiscData[140]", false).ReplaceRaw(info140source.Address, info140source.Length);
-								root.Export(file.Name);
-								filesCreated.Add(file.Name);
+						FileInfo[] other_files = new FileInfo[4];
+						string[] append = { "_boss_battle", "_corps", "_homerun", "_training" };
+						for (int i = 0; i < 4; i++) {
+							other_files[i] = new FileInfo(info_filename.Replace("info.pac", "info" + append[i] + ".pac"));
+						}
+						DataSource info140source = info140.OriginalSource;
+						foreach (FileInfo file in other_files) {
+							Console.WriteLine(file.FullName);
+							if (file.Exists) {
+								using (ResourceNode root = NodeFactory.FromFile(null, file.FullName)) {
+									root.FindChild("MiscData[140]", false).ReplaceRaw(info140source.Address, info140source.Length);
+									root.Export(file.Name);
+									filesCreated.Add(file.Name);
+								}
 							}
 						}
 					}
@@ -101,7 +104,11 @@ namespace TransferSSS {
 				foreach (string s in filesCreated) {
 					msg += s + "\n";
 				}
-				MessageBox.Show(msg+"Remember to copy the new files to the correct locations.", "Finished");
+				msg += "Remember to copy the new files to the correct locations.";
+				if (filesCreated.Count == 0) {
+					msg = "No files copied.";
+				}
+				MessageBox.Show(msg, "Finished");
 			}
 		}
 	}

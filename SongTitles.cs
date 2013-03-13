@@ -6,13 +6,18 @@ using BrawlLib.SSBB.ResourceNodes;
 
 namespace TransferSSS {
 	class SongTitles {
-		public static void copy(MSBinNode from, MSBinNode to) {
+		public static bool copy(MSBinNode from, MSBinNode to) {
+			bool changed = false;
 			for (int i = 0; i < from._strings.Count; i++) {
 				string custom = from._strings[i];
 				if (custom != originalTitles[i]) {
-					to._strings[i] = from._strings[i];
+					if (to._strings[i] != custom) {
+						to._strings[i] = custom;
+						changed = true;
+					}
 				}
 			}
+			return changed;
 		}
 
 		public static string[] originalTitles = {
