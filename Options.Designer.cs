@@ -24,13 +24,15 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.common5_button = new System.Windows.Forms.Button();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.addCodes = new System.Windows.Forms.CheckBox();
 			this.mu_menumain_change = new System.Windows.Forms.Button();
 			this.updateSongTitles = new System.Windows.Forms.CheckBox();
 			this.common5_label = new System.Windows.Forms.CheckBox();
 			this.mu_menumain_label = new System.Windows.Forms.CheckBox();
 			this.rsbe01_button = new System.Windows.Forms.Button();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.info_button = new System.Windows.Forms.Button();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
@@ -53,10 +55,14 @@
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.btnAbout = new System.Windows.Forms.Button();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.info_button = new System.Windows.Forms.Button();
-			this.tableLayoutPanel1.SuspendLayout();
+			this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.label9 = new System.Windows.Forms.Label();
+			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.label10 = new System.Windows.Forms.Label();
+			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_width_std)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_height_std)).BeginInit();
@@ -66,48 +72,24 @@
 			((System.ComponentModel.ISupportInitialize)(this.frontstname_height)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
+			this.flowLayoutPanel2.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
+			this.tableLayoutPanel3.SuspendLayout();
+			this.tableLayoutPanel4.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// common5_button
 			// 
 			this.common5_button.AutoSize = true;
 			this.common5_button.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.common5_button.Location = new System.Drawing.Point(326, 95);
+			this.common5_button.Location = new System.Drawing.Point(320, 0);
 			this.common5_button.Margin = new System.Windows.Forms.Padding(0);
 			this.common5_button.Name = "common5_button";
-			this.common5_button.Size = new System.Drawing.Size(66, 24);
+			this.common5_button.Size = new System.Drawing.Size(66, 25);
 			this.common5_button.TabIndex = 1;
 			this.common5_button.Text = "Change";
 			this.common5_button.UseVisualStyleBackColor = true;
 			this.common5_button.Click += new System.EventHandler(this.common5_button_Click);
-			// 
-			// tableLayoutPanel1
-			// 
-			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.33333F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.Controls.Add(this.addCodes, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.common5_button, 1, 4);
-			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_change, 1, 5);
-			this.tableLayoutPanel1.Controls.Add(this.updateSongTitles, 0, 2);
-			this.tableLayoutPanel1.Controls.Add(this.common5_label, 0, 4);
-			this.tableLayoutPanel1.Controls.Add(this.mu_menumain_label, 0, 5);
-			this.tableLayoutPanel1.Controls.Add(this.rsbe01_button, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.label7, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.label8, 0, 3);
-			this.tableLayoutPanel1.Controls.Add(this.info_button, 1, 2);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 6;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66708F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66542F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66708F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66708F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 144);
-			this.tableLayoutPanel1.TabIndex = 1;
 			// 
 			// addCodes
 			// 
@@ -124,7 +106,7 @@
 			// mu_menumain_change
 			// 
 			this.mu_menumain_change.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mu_menumain_change.Location = new System.Drawing.Point(326, 119);
+			this.mu_menumain_change.Location = new System.Drawing.Point(320, 25);
 			this.mu_menumain_change.Margin = new System.Windows.Forms.Padding(0);
 			this.mu_menumain_change.Name = "mu_menumain_change";
 			this.mu_menumain_change.Size = new System.Drawing.Size(66, 25);
@@ -138,7 +120,7 @@
 			this.updateSongTitles.AutoSize = true;
 			this.updateSongTitles.Checked = true;
 			this.updateSongTitles.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.updateSongTitles.Location = new System.Drawing.Point(3, 51);
+			this.updateSongTitles.Location = new System.Drawing.Point(3, 3);
 			this.updateSongTitles.Name = "updateSongTitles";
 			this.updateSongTitles.Size = new System.Drawing.Size(109, 17);
 			this.updateSongTitles.TabIndex = 5;
@@ -150,10 +132,9 @@
 			this.common5_label.AutoSize = true;
 			this.common5_label.Checked = true;
 			this.common5_label.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.common5_label.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.common5_label.Location = new System.Drawing.Point(3, 98);
+			this.common5_label.Location = new System.Drawing.Point(3, 3);
 			this.common5_label.Name = "common5_label";
-			this.common5_label.Size = new System.Drawing.Size(320, 18);
+			this.common5_label.Size = new System.Drawing.Size(100, 17);
 			this.common5_label.TabIndex = 6;
 			this.common5_label.Text = "common5_label";
 			this.common5_label.UseVisualStyleBackColor = true;
@@ -163,7 +144,7 @@
 			this.mu_menumain_label.AutoSize = true;
 			this.mu_menumain_label.Checked = true;
 			this.mu_menumain_label.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.mu_menumain_label.Location = new System.Drawing.Point(3, 122);
+			this.mu_menumain_label.Location = new System.Drawing.Point(3, 28);
 			this.mu_menumain_label.Name = "mu_menumain_label";
 			this.mu_menumain_label.Size = new System.Drawing.Size(122, 17);
 			this.mu_menumain_label.TabIndex = 7;
@@ -172,15 +153,45 @@
 			// 
 			// rsbe01_button
 			// 
-			this.rsbe01_button.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.rsbe01_button.Location = new System.Drawing.Point(326, 0);
+			this.rsbe01_button.Location = new System.Drawing.Point(320, 0);
 			this.rsbe01_button.Margin = new System.Windows.Forms.Padding(0);
 			this.rsbe01_button.Name = "rsbe01_button";
-			this.rsbe01_button.Size = new System.Drawing.Size(66, 24);
+			this.rsbe01_button.Size = new System.Drawing.Size(66, 25);
 			this.rsbe01_button.TabIndex = 8;
 			this.rsbe01_button.Text = "Change";
 			this.rsbe01_button.UseVisualStyleBackColor = true;
 			this.rsbe01_button.Click += new System.EventHandler(this.rsbe01_button_Click);
+			// 
+			// label7
+			// 
+			this.label7.Location = new System.Drawing.Point(3, 33);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(386, 13);
+			this.label7.TabIndex = 9;
+			this.label7.Text = "Copy custom songs in MiscData[140].brres to:";
+			this.label7.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(3, 79);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(224, 13);
+			this.label8.TabIndex = 10;
+			this.label8.Text = "Copy new MiscData[80].brres (stage icons) to:";
+			this.label8.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			// 
+			// info_button
+			// 
+			this.info_button.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.info_button.Location = new System.Drawing.Point(320, 0);
+			this.info_button.Margin = new System.Windows.Forms.Padding(0);
+			this.info_button.Name = "info_button";
+			this.info_button.Size = new System.Drawing.Size(66, 25);
+			this.info_button.TabIndex = 11;
+			this.info_button.Text = "Change";
+			this.info_button.UseVisualStyleBackColor = true;
+			this.info_button.Click += new System.EventHandler(this.info_button_Click);
 			// 
 			// openFileDialog1
 			// 
@@ -208,14 +219,15 @@
 			this.tableLayoutPanel2.Controls.Add(this.frontstname_height, 4, 2);
 			this.tableLayoutPanel2.Controls.Add(this.copy_std, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.copy_exp, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.label12, 0, 2);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 144);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 155);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 3;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 97);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 116);
 			this.tableLayoutPanel2.TabIndex = 2;
 			// 
 			// label1
@@ -224,31 +236,31 @@
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label1.Location = new System.Drawing.Point(143, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(82, 32);
+			this.label1.Size = new System.Drawing.Size(82, 38);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "Minimum size (prevbase):";
+			this.label1.Text = "Maximum size (prevbase):";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label2.Location = new System.Drawing.Point(143, 32);
+			this.label2.Location = new System.Drawing.Point(143, 38);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(82, 32);
+			this.label2.Size = new System.Drawing.Size(82, 38);
 			this.label2.TabIndex = 1;
-			this.label2.Text = "Minimum size (prevbase):";
+			this.label2.Text = "Maximum size (prevbase):";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label3.Location = new System.Drawing.Point(143, 64);
+			this.label3.Location = new System.Drawing.Point(143, 76);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(82, 33);
+			this.label3.Size = new System.Drawing.Size(82, 40);
 			this.label3.TabIndex = 2;
-			this.label3.Text = "Minimum size\r\n(frontstname):";
+			this.label3.Text = "Maximum size\r\n(frontstname):";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			// 
 			// prevbase_width_std
@@ -259,7 +271,7 @@
             0,
             0,
             0});
-			this.prevbase_width_std.Location = new System.Drawing.Point(231, 9);
+			this.prevbase_width_std.Location = new System.Drawing.Point(231, 15);
 			this.prevbase_width_std.Maximum = new decimal(new int[] {
             176,
             0,
@@ -283,7 +295,7 @@
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label4.Location = new System.Drawing.Point(304, 13);
+			this.label4.Location = new System.Drawing.Point(304, 19);
 			this.label4.Margin = new System.Windows.Forms.Padding(6);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(12, 13);
@@ -299,7 +311,7 @@
             0,
             0,
             0});
-			this.prevbase_height_std.Location = new System.Drawing.Point(325, 9);
+			this.prevbase_height_std.Location = new System.Drawing.Point(325, 15);
 			this.prevbase_height_std.Maximum = new decimal(new int[] {
             176,
             0,
@@ -327,7 +339,7 @@
             0,
             0,
             0});
-			this.prevbase_width_exp.Location = new System.Drawing.Point(231, 41);
+			this.prevbase_width_exp.Location = new System.Drawing.Point(231, 53);
 			this.prevbase_width_exp.Maximum = new decimal(new int[] {
             176,
             0,
@@ -351,7 +363,7 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label5.Location = new System.Drawing.Point(304, 45);
+			this.label5.Location = new System.Drawing.Point(304, 57);
 			this.label5.Margin = new System.Windows.Forms.Padding(6);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(12, 13);
@@ -367,7 +379,7 @@
             0,
             0,
             0});
-			this.prevbase_height_exp.Location = new System.Drawing.Point(325, 41);
+			this.prevbase_height_exp.Location = new System.Drawing.Point(325, 53);
 			this.prevbase_height_exp.Maximum = new decimal(new int[] {
             176,
             0,
@@ -395,7 +407,7 @@
             0,
             0,
             0});
-			this.frontstname_width.Location = new System.Drawing.Point(231, 74);
+			this.frontstname_width.Location = new System.Drawing.Point(231, 93);
 			this.frontstname_width.Maximum = new decimal(new int[] {
             208,
             0,
@@ -419,7 +431,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.label6.Location = new System.Drawing.Point(304, 78);
+			this.label6.Location = new System.Drawing.Point(304, 97);
 			this.label6.Margin = new System.Windows.Forms.Padding(6);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(12, 13);
@@ -435,7 +447,7 @@
             0,
             0,
             0});
-			this.frontstname_height.Location = new System.Drawing.Point(325, 74);
+			this.frontstname_height.Location = new System.Drawing.Point(325, 93);
 			this.frontstname_height.Maximum = new decimal(new int[] {
             56,
             0,
@@ -463,7 +475,7 @@
 			this.copy_std.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.copy_std.Location = new System.Drawing.Point(3, 3);
 			this.copy_std.Name = "copy_std";
-			this.copy_std.Size = new System.Drawing.Size(134, 26);
+			this.copy_std.Size = new System.Drawing.Size(134, 32);
 			this.copy_std.TabIndex = 6;
 			this.copy_std.Text = "Keep stage icons\r\n(1-31, 50-59)";
 			this.copy_std.UseVisualStyleBackColor = true;
@@ -472,9 +484,9 @@
 			// 
 			this.copy_exp.AutoSize = true;
 			this.copy_exp.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.copy_exp.Location = new System.Drawing.Point(3, 35);
+			this.copy_exp.Location = new System.Drawing.Point(3, 41);
 			this.copy_exp.Name = "copy_exp";
-			this.copy_exp.Size = new System.Drawing.Size(134, 26);
+			this.copy_exp.Size = new System.Drawing.Size(134, 32);
 			this.copy_exp.TabIndex = 7;
 			this.copy_exp.Text = "Keep stage icons\r\n(32-49, 60+)";
 			this.copy_exp.UseVisualStyleBackColor = true;
@@ -483,7 +495,7 @@
 			// 
 			this.panel1.Controls.Add(this.flowLayoutPanel1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 241);
+			this.panel1.Location = new System.Drawing.Point(0, 271);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(392, 32);
 			this.panel1.TabIndex = 3;
@@ -538,51 +550,122 @@
 			this.btnAbout.UseVisualStyleBackColor = true;
 			this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
 			// 
-			// label7
+			// flowLayoutPanel2
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label7.Location = new System.Drawing.Point(3, 24);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(320, 24);
-			this.label7.TabIndex = 9;
-			this.label7.Text = "Copy custom songs in MiscData[140].brres to:";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel1);
+			this.flowLayoutPanel2.Controls.Add(this.label9);
+			this.flowLayoutPanel2.Controls.Add(this.label7);
+			this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel3);
+			this.flowLayoutPanel2.Controls.Add(this.label10);
+			this.flowLayoutPanel2.Controls.Add(this.label8);
+			this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel4);
+			this.flowLayoutPanel2.Controls.Add(this.label11);
+			this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+			this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+			this.flowLayoutPanel2.Size = new System.Drawing.Size(392, 155);
+			this.flowLayoutPanel2.TabIndex = 12;
 			// 
-			// label8
+			// tableLayoutPanel1
 			// 
-			this.label8.AutoSize = true;
-			this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label8.Location = new System.Drawing.Point(3, 71);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(320, 24);
-			this.label8.TabIndex = 10;
-			this.label8.Text = "Copy new MiscData[80].brres (stage icons) to:";
-			this.label8.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.Controls.Add(this.addCodes, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.rsbe01_button, 1, 0);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(386, 25);
+			this.tableLayoutPanel1.TabIndex = 0;
+			this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
 			// 
-			// info_button
+			// label9
 			// 
-			this.info_button.Location = new System.Drawing.Point(326, 48);
-			this.info_button.Margin = new System.Windows.Forms.Padding(0);
-			this.info_button.Name = "info_button";
-			this.info_button.Size = new System.Drawing.Size(66, 23);
-			this.info_button.TabIndex = 11;
-			this.info_button.Text = "Change";
-			this.info_button.UseVisualStyleBackColor = true;
-			this.info_button.Click += new System.EventHandler(this.info_button_Click);
+			this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label9.Location = new System.Drawing.Point(3, 31);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(386, 2);
+			this.label9.TabIndex = 1;
+			// 
+			// tableLayoutPanel3
+			// 
+			this.tableLayoutPanel3.ColumnCount = 2;
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel3.Controls.Add(this.updateSongTitles, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.info_button, 1, 0);
+			this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 49);
+			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			this.tableLayoutPanel3.RowCount = 1;
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(386, 25);
+			this.tableLayoutPanel3.TabIndex = 10;
+			// 
+			// label10
+			// 
+			this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label10.Location = new System.Drawing.Point(3, 77);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(386, 2);
+			this.label10.TabIndex = 11;
+			// 
+			// tableLayoutPanel4
+			// 
+			this.tableLayoutPanel4.ColumnCount = 2;
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel4.Controls.Add(this.common5_label, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.common5_button, 1, 0);
+			this.tableLayoutPanel4.Controls.Add(this.mu_menumain_label, 0, 1);
+			this.tableLayoutPanel4.Controls.Add(this.mu_menumain_change, 1, 1);
+			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 95);
+			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+			this.tableLayoutPanel4.RowCount = 2;
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(386, 50);
+			this.tableLayoutPanel4.TabIndex = 12;
+			// 
+			// label11
+			// 
+			this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label11.Location = new System.Drawing.Point(3, 148);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(386, 2);
+			this.label11.TabIndex = 13;
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label12.Location = new System.Drawing.Point(3, 76);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(134, 40);
+			this.label12.TabIndex = 8;
+			this.label12.Text = "Resize stage names for selected number ranges:";
+			this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// Options
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(392, 273);
+			this.ClientSize = new System.Drawing.Size(392, 303);
 			this.Controls.Add(this.tableLayoutPanel2);
-			this.Controls.Add(this.tableLayoutPanel1);
+			this.Controls.Add(this.flowLayoutPanel2);
 			this.Controls.Add(this.panel1);
 			this.Name = "Options";
 			this.Text = "Options";
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel1.PerformLayout();
+			this.Load += new System.EventHandler(this.Options_Load);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_width_std)).EndInit();
@@ -593,6 +676,14 @@
 			((System.ComponentModel.ISupportInitialize)(this.frontstname_height)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.flowLayoutPanel1.ResumeLayout(false);
+			this.flowLayoutPanel2.ResumeLayout(false);
+			this.flowLayoutPanel2.PerformLayout();
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
+			this.tableLayoutPanel3.ResumeLayout(false);
+			this.tableLayoutPanel3.PerformLayout();
+			this.tableLayoutPanel4.ResumeLayout(false);
+			this.tableLayoutPanel4.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -600,7 +691,6 @@
 		#endregion
 
 		private System.Windows.Forms.Button common5_button;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button mu_menumain_change;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -632,6 +722,14 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Button info_button;
+		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label label12;
 
 	}
 }
