@@ -49,6 +49,7 @@
 			this.frontstname_height = new System.Windows.Forms.NumericUpDown();
 			this.copy_std = new System.Windows.Forms.CheckBox();
 			this.copy_exp = new System.Windows.Forms.CheckBox();
+			this.label12 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.btnOkay = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.label11 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_width_std)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_height_std)).BeginInit();
@@ -138,6 +138,7 @@
 			this.common5_label.TabIndex = 6;
 			this.common5_label.Text = "common5_label";
 			this.common5_label.UseVisualStyleBackColor = true;
+			this.common5_label.CheckedChanged += new System.EventHandler(this.common5_label_CheckedChanged);
 			// 
 			// mu_menumain_label
 			// 
@@ -150,6 +151,7 @@
 			this.mu_menumain_label.TabIndex = 7;
 			this.mu_menumain_label.Text = "mu_menumain_label";
 			this.mu_menumain_label.UseVisualStyleBackColor = true;
+			this.mu_menumain_label.CheckedChanged += new System.EventHandler(this.mu_menumain_label_CheckedChanged);
 			// 
 			// rsbe01_button
 			// 
@@ -334,6 +336,7 @@
 			// prevbase_width_exp
 			// 
 			this.prevbase_width_exp.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.prevbase_width_exp.Enabled = false;
 			this.prevbase_width_exp.Increment = new decimal(new int[] {
             4,
             0,
@@ -374,6 +377,7 @@
 			// prevbase_height_exp
 			// 
 			this.prevbase_height_exp.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.prevbase_height_exp.Enabled = false;
 			this.prevbase_height_exp.Increment = new decimal(new int[] {
             4,
             0,
@@ -477,8 +481,9 @@
 			this.copy_std.Name = "copy_std";
 			this.copy_std.Size = new System.Drawing.Size(134, 32);
 			this.copy_std.TabIndex = 6;
-			this.copy_std.Text = "Keep stage icons\r\n(1-31, 50-59)";
+			this.copy_std.Text = "Keep your icons\r\n(1-31, 50-59)";
 			this.copy_std.UseVisualStyleBackColor = true;
+			this.copy_std.CheckedChanged += new System.EventHandler(this.copy_std_CheckedChanged);
 			// 
 			// copy_exp
 			// 
@@ -488,8 +493,20 @@
 			this.copy_exp.Name = "copy_exp";
 			this.copy_exp.Size = new System.Drawing.Size(134, 32);
 			this.copy_exp.TabIndex = 7;
-			this.copy_exp.Text = "Keep stage icons\r\n(32-49, 60+)";
+			this.copy_exp.Text = "Keep your icons\r\n(32-49, 60+)";
 			this.copy_exp.UseVisualStyleBackColor = true;
+			this.copy_exp.CheckedChanged += new System.EventHandler(this.copy_exp_CheckedChanged);
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label12.Location = new System.Drawing.Point(3, 76);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(134, 40);
+			this.label12.TabIndex = 8;
+			this.label12.Text = "Resize stage names for selected number ranges:";
+			this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel1
 			// 
@@ -579,10 +596,9 @@
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 1;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(386, 25);
 			this.tableLayoutPanel1.TabIndex = 0;
-			this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
 			// 
 			// label9
 			// 
@@ -644,17 +660,6 @@
 			this.label11.Size = new System.Drawing.Size(386, 2);
 			this.label11.TabIndex = 13;
 			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label12.Location = new System.Drawing.Point(3, 76);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(134, 40);
-			this.label12.TabIndex = 8;
-			this.label12.Text = "Resize stage names for selected number ranges:";
-			this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
 			// Options
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,7 +670,6 @@
 			this.Controls.Add(this.panel1);
 			this.Name = "Options";
 			this.Text = "Options";
-			this.Load += new System.EventHandler(this.Options_Load);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.prevbase_width_std)).EndInit();

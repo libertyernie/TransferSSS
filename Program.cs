@@ -12,25 +12,6 @@ namespace TransferSSS {
 			if (o.ShowDialog() == DialogResult.OK) {
 				List<string> filesCreated = new List<string>();
 
-				if (o.Copy_std || o.Copy_exp) {
-					if (!new FileInfo("MiscData[80].brres").Exists) {
-						MessageBox.Show("Error: cannot find a MiscData[80].brres file to use as a base.");
-						return;
-					}
-				}
-				if (o.RSBE01 != null) {
-					if (!new FileInfo("Codeset.txt").Exists) {
-						MessageBox.Show("Error: cannot find a Codeset.txt file to add to the GCT.");
-						return;
-					}
-				}
-				if (o.Info != null) {
-					if (!new FileInfo("MiscData[140].msbin").Exists) {
-						MessageBox.Show("Error: cannot find a MiscData[140].msbin file to get custom song titles from.");
-						return;
-					}
-				}
-
 				#region Add to GCT
 				if (o.RSBE01 != null) {
 					GCT.add(o.RSBE01.FullName, "Codeset.txt", "RSBE01.gct");

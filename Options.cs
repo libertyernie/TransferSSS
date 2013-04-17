@@ -190,6 +190,20 @@ namespace TransferSSS {
 					break;
 				}
 			}
+
+			if (!new FileInfo("MiscData[80].brres").Exists) {
+				MessageBox.Show("Cannot find a MiscData[80].brres file to use as a base.");
+				common5_label.Enabled = mu_menumain_label.Enabled =
+					common5_label.Checked = mu_menumain_label.Checked = false;
+			}
+			if (!new FileInfo("Codeset.txt").Exists) {
+				MessageBox.Show("Cannot find a Codeset.txt file to add to the GCT.");
+				addCodes.Enabled = addCodes.Checked = false;
+			}
+			if (!new FileInfo("MiscData[140].msbin").Exists) {
+				MessageBox.Show("Cannot find a MiscData[140].msbin file to get custom song titles from.");
+				updateSongTitles.Enabled = updateSongTitles.Checked = false;
+			}
 		}
 
 		private void common5_button_Click(object sender, EventArgs e) {
@@ -249,6 +263,37 @@ namespace TransferSSS {
 
 		private void btnCancel_Click(object sender, EventArgs e) {
 			Close();
+		}
+
+		private void updateAll() {
+			if (common5_label.Checked || mu_menumain_label.Checked) {
+				copy_std.Enabled = copy_exp.Enabled = true;
+				// update things individually
+				prevbase_width_std.Enabled = prevbase_height_std.Enabled = copy_std.Checked;
+				prevbase_width_exp.Enabled = prevbase_height_exp.Enabled = copy_exp.Checked;
+				frontstname_width.Enabled = frontstname_height.Enabled = (copy_exp.Checked || copy_std.Checked);
+			} else {
+				copy_std.Enabled = copy_exp.Enabled =
+				prevbase_width_std.Enabled = prevbase_height_std.Enabled =
+				prevbase_width_exp.Enabled = prevbase_height_exp.Enabled =
+				frontstname_width.Enabled = frontstname_height.Enabled = false;
+			}
+		}
+
+		private void copy_std_CheckedChanged(object sender, EventArgs e) {
+			updateAll();
+		}
+
+		private void copy_exp_CheckedChanged(object sender, EventArgs e) {
+			updateAll();
+		}
+
+		private void common5_label_CheckedChanged(object sender, EventArgs e) {
+			updateAll();
+		}
+
+		private void mu_menumain_label_CheckedChanged(object sender, EventArgs e) {
+			updateAll();
 		}
 	}
 }
