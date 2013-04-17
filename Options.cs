@@ -267,6 +267,8 @@ namespace TransferSSS {
 				"\n" +
 				"When using the File Patch Code, resizing the images is required to keep the filesize below a certain level.";
 			MessageBox.Show(this, about);
+			AboutDialog aboutd = new AboutDialog();
+			aboutd.Show();
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e) {

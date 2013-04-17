@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>About TransferSSS</title>
+</head>
+<body>
+<p>The options dialog for TransferSSS allows you to do any or all of three different things:</p>
+<ul>
+<li>The first checkbox - "Add from Codeset.txt to..." - lets you add all the codes that are in Codeset.txt (a text file in the program's folder) into the RSBE01.gct file shown. You can use the Change button to select a different GCT file.</li>
+<li>The next checkbox - "Copy custom songs in MiscData[140].brres to:" - scans the MiscData[140].brres file in the program's folder for song titles different from the default Brawl ones, and inserts those into your info.pac file. Use the Change button to pick a different info.pac. If certain other files (info_training, info_homerun, etc.) are in the same folder as info.pac, those will get edited too.</li>
+<li>The next two checkboxes, which come after "Copy new MiscData[80].brres...", let you copy the MiscData[80].brres file (again, in the program's folder) into your common5 and/or mu_menumain file. This file contains the stage select screen data, including the stage icons, previews and names.</li>
+<li>The last two checkboxes let you preserve he stage icons/names/previews you already have in your common5.pac, even after the new SSS data gets copied. (The program does this by copying them back in afterwards.)
+<ul>
+<li>Since there are so many more icons in an expanded SSS than default Brawl, you might need to make some of them smaller so the file isn't too big; this is what the "maximum size" boxes are for. If you're confident that your images don't need to be resized, just set these to really high numbers. The program will only make these images smaller (if it has to), not bigger.</li>
+<li>Icons 1-31 and 50-59 correspond to default Brawl stages: 1-31 for Brawl and 50-59 for Melee. All other icons (32-49 and 60+) would only be used for an expanded SSS.</li>
+<ul>
+<li>In my Classic Expansion Pack, I use 128x128 previews for the added stages and (quite blurry) 88x88 previews for the old ones, but there's no logic behind this, other than that using 128x128 for all of them would make the file too big.</li>
+</ul></ul></ul>
+</body>
+</html>
+
