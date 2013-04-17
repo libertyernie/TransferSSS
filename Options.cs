@@ -260,13 +260,13 @@ namespace TransferSSS {
 		}
 
 		private void btnAbout_Click(object sender, EventArgs e) {
-			const string about = "This program will perform the following tasks:\n" +
+			/*const string about = "This program will perform the following tasks:\n" +
 				" * Read the custom stage icons/names/portraits from common5.pac and/or mu_menumain.pac\n" +
 				" * Resize the images and copy them into a new, stage-expansion-enabled BRRES, using MiscData[80].brres as a base\n" +
 				" * Insert the new BRRES into copies of common5 and/or mu_menumain, which are saved to the current directory\n" +
 				"\n" +
 				"When using the File Patch Code, resizing the images is required to keep the filesize below a certain level.";
-			MessageBox.Show(this, about);
+			MessageBox.Show(this, about);*/
 			AboutDialog aboutd = new AboutDialog();
 			aboutd.Show();
 		}

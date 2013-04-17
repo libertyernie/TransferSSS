@@ -11,9 +11,12 @@ namespace TransferSSS {
 	public partial class AboutDialog : Form {
 		public AboutDialog() {
 			InitializeComponent();
-//			webBrowser1.Navigate("about:blank");
 			webBrowser1.Document.Write(string.Empty);
 			webBrowser1.DocumentText = Properties.Resources.help;
+		}
+
+		public static void About() {
+			new AboutDialog().Show();
 		}
 	}
 }

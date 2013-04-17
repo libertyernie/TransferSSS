@@ -1,14 +1,25 @@
 <html>
 <head>
+<style>
+body 
+{
+    font-family: Microsoft Sans Serif, Helvetica, Arial, Libertaion Sans, sans-serif;
+    font-size: 10pt;
+}
+li 
+{
+    margin: 0.5em; 
+}
+</style>
 <title>About TransferSSS</title>
 </head>
 <body>
 <p>The options dialog for TransferSSS allows you to do any or all of three different things:</p>
 <ul>
-<li>The first checkbox - "Add from Codeset.txt to..." - lets you add all the codes that are in Codeset.txt (a text file in the program's folder) into the RSBE01.gct file shown. You can use the Change button to select a different GCT file.</li>
-<li>The next checkbox - "Copy custom songs in MiscData[140].brres to:" - scans the MiscData[140].brres file in the program's folder for song titles different from the default Brawl ones, and inserts those into your info.pac file. Use the Change button to pick a different info.pac. If certain other files (info_training, info_homerun, etc.) are in the same folder as info.pac, those will get edited too.</li>
-<li>The next two checkboxes, which come after "Copy new MiscData[80].brres...", let you copy the MiscData[80].brres file (again, in the program's folder) into your common5 and/or mu_menumain file. This file contains the stage select screen data, including the stage icons, previews and names.</li>
-<li>The last two checkboxes let you preserve he stage icons/names/previews you already have in your common5.pac, even after the new SSS data gets copied. (The program does this by copying them back in afterwards.)
+<li>The first checkbox - <b>"Add from Codeset.txt to..."</b> - lets you add all the codes that are in <tt>Codeset.txt</tt> (a text file in the program's folder) into the <tt>RSBE01.gct</tt> file shown. You can use the Change button to select a different GCT file.</li>
+<li>The next checkbox - <b>"Copy custom songs in MiscData[140].brres to:"</b> - scans the <tt>MiscData[140].brres</tt> file in the program's folder for song titles different from the default Brawl ones, and inserts those into your <tt>info.pac</tt> file. Use the Change button to pick a different <tt>info.pac.</tt> If certain other files (<tt>info_training, info_homerun</tt>, etc.) are in the same folder as <tt>info.pac</tt>, those will get edited too.</li>
+<li>The next two checkboxes, which come after <b>"Copy new MiscData[80].brres..."</b>, let you copy the <tt>MiscData[80].brres</tt> file (again, in the program's folder) into your <tt>common5</tt> and/or <tt>mu_menumain</tt> file. This file contains the stage select screen data, including the stage icons, previews and names.</li>
+<li>The last two checkboxes let you preserve the stage icons/names/previews you already have in your <tt>common5.pac</tt>, even after the new SSS data gets copied. (The program does this by copying them back in afterwards.)
 <ul>
 <li>Since there are so many more icons in an expanded SSS than default Brawl, you might need to make some of them smaller so the file isn't too big; this is what the "maximum size" boxes are for. If you're confident that your images don't need to be resized, just set these to really high numbers. The program will only make these images smaller (if it has to), not bigger.</li>
 <li>Icons 1-31 and 50-59 correspond to default Brawl stages: 1-31 for Brawl and 50-59 for Melee. All other icons (32-49 and 60+) would only be used for an expanded SSS.</li>
