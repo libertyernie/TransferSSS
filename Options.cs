@@ -11,6 +11,7 @@ using System.IO;
 namespace TransferSSS {
 	public partial class Options : Form {
 		private FileInfo _common5, _mu_menumain, _rsbe01, _info;
+		#region Accessors for each file (Common5, RSBE01, etc.)
 		public FileInfo Common5 {
 			get {
 				return (common5_label.Checked ? _common5 : null);
@@ -87,7 +88,9 @@ namespace TransferSSS {
 				}
 			}
 		}
+		#endregion
 
+		#region Accessors for number spinners
 		public int Prevbase_width_std {
 			get {
 				return (int)prevbase_width_std.Value;
@@ -118,6 +121,7 @@ namespace TransferSSS {
 				return (int)frontstname_height.Value;
 			}
 		}
+		#endregion
 
 		public bool Copy_std {
 			get {
@@ -135,6 +139,7 @@ namespace TransferSSS {
 
 			Common5 = Mu_menumain = RSBE01 = Info = null;
 
+			#region Scan for files in current folder and root of current drive
 			string[] common5_folders = {
 								"private/wii/app/RSBE/pf/system", "brawlmods/textures/system",
 								"brawlmods/vbrawl/system", "brawlmods/brawlminus/system",
@@ -190,11 +195,14 @@ namespace TransferSSS {
 					break;
 				}
 			}
+			#endregion
 
 			if (!new FileInfo("MiscData[80].brres").Exists) {
 				MessageBox.Show("Cannot find a MiscData[80].brres file to use as a base.");
 				common5_label.Enabled = mu_menumain_label.Enabled =
-					common5_label.Checked = mu_menumain_label.Checked = false;
+					common5_label.Checked = mu_menumain_label.Checked = 
+					copy_std.Checked = copy_exp.Checked = false;
+				// copy_std and copy_exp will be disabled automatically by unchecking common5_label and mu_menumain_label.
 			}
 			if (!new FileInfo("Codeset.txt").Exists) {
 				MessageBox.Show("Cannot find a Codeset.txt file to add to the GCT.");
