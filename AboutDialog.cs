@@ -14,9 +14,5 @@ namespace TransferSSS {
 			webBrowser1.Document.Write(string.Empty);
 			webBrowser1.DocumentText = Properties.Resources.help;
 		}
-
-		public static void About() {
-			new AboutDialog().Show();
-		}
 	}
 }

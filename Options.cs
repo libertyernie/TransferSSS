@@ -61,7 +61,7 @@ namespace TransferSSS {
 					_rsbe01 = null;
 				}
 				if (_rsbe01 != null) {
-					addCodes.Text = "Add from Codeset.txt to "+_rsbe01.FullName;
+					addCodes.Text = _rsbe01.FullName;
 					addCodes.Enabled = true;
 				} else {
 					addCodes.Text = "No RSBE01.gct selected";
@@ -198,18 +198,18 @@ namespace TransferSSS {
 			#endregion
 
 			if (!new FileInfo("MiscData[80].brres").Exists) {
-				MessageBox.Show("Cannot find a MiscData[80].brres file to use as a base.");
+				label8.Text = ("Cannot find a MiscData[80].brres file to use as a base.");
 				common5_label.Enabled = mu_menumain_label.Enabled =
 					common5_label.Checked = mu_menumain_label.Checked = 
 					copy_std.Checked = copy_exp.Checked = false;
 				// copy_std and copy_exp will be disabled automatically by unchecking common5_label and mu_menumain_label.
 			}
 			if (!new FileInfo("Codeset.txt").Exists) {
-				MessageBox.Show("Cannot find a Codeset.txt file to add to the GCT.");
+				label13.Text = ("Cannot find a Codeset.txt file to add to the GCT.");
 				addCodes.Enabled = addCodes.Checked = false;
 			}
 			if (!new FileInfo("MiscData[140].msbin").Exists) {
-				MessageBox.Show("Cannot find a MiscData[140].msbin file to get custom song titles from.");
+				label7.Text = ("Cannot find a MiscData[140].msbin file to get custom song titles from.");
 				updateSongTitles.Enabled = updateSongTitles.Checked = false;
 			}
 		}
@@ -260,13 +260,6 @@ namespace TransferSSS {
 		}
 
 		private void btnAbout_Click(object sender, EventArgs e) {
-			/*const string about = "This program will perform the following tasks:\n" +
-				" * Read the custom stage icons/names/portraits from common5.pac and/or mu_menumain.pac\n" +
-				" * Resize the images and copy them into a new, stage-expansion-enabled BRRES, using MiscData[80].brres as a base\n" +
-				" * Insert the new BRRES into copies of common5 and/or mu_menumain, which are saved to the current directory\n" +
-				"\n" +
-				"When using the File Patch Code, resizing the images is required to keep the filesize below a certain level.";
-			MessageBox.Show(this, about);*/
 			AboutDialog aboutd = new AboutDialog();
 			aboutd.Show();
 		}
