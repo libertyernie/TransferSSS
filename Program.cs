@@ -11,40 +11,49 @@ namespace TransferSSS {
 			Options o = new Options();
 			if (o.ShowDialog() == DialogResult.OK) {
 				List<string> filesCreated = new List<string>();
+				Dictionary<string, string> destinations = new Dictionary<string, string>();
+				List<string> filesSkipped = new List<string>();
 
 				#region Add to GCT
 				if (o.RSBE01 != null) {
 					GCT.add(o.RSBE01.FullName, "Codeset.txt", "RSBE01.gct");
 					filesCreated.Add("RSBE01.gct");
+					destinations.Add("RSBE01.gct", o.RSBE01.FullName);
 				}
 				#endregion
 
 				#region Edit info.pac and its siblings
 				if (o.Info != null) {
 					string info_filename = o.Info.FullName;
-					ResourceNode info = NodeFactory.FromFile(null, info_filename);
-					MSBinNode info140 = info.FindChild("MiscData[140]", false) as MSBinNode;
-					bool changed;
-					using (MSBinNode custom140 = NodeFactory.FromFile(null, "MiscData[140].msbin") as MSBinNode) {
-						changed = SongTitles.copy(custom140, info140);
-					}
-					if (changed) {
-						info.Export(o.Info.Name);
-						filesCreated.Add(o.Info.Name);
-
-						FileInfo[] other_files = new FileInfo[4];
-						string[] append = { "_boss_battle", "_corps", "_homerun", "_training" };
-						for (int i = 0; i < 4; i++) {
-							other_files[i] = new FileInfo(info_filename.Replace("info.pac", "info" + append[i] + ".pac"));
+					using (ResourceNode info = NodeFactory.FromFile(null, info_filename)) {
+						MSBinNode info140 = info.FindChild("MiscData[140]", false) as MSBinNode;
+						bool changed = true;
+						using (MSBinNode custom140 = NodeFactory.FromFile(null, "MiscData[140].msbin") as MSBinNode) {
+//							changed = 
+							SongTitles.copy(custom140, info140);
 						}
-						DataSource info140source = info140.OriginalSource;
-						foreach (FileInfo file in other_files) {
-							Console.WriteLine(file.FullName);
-							if (file.Exists) {
-								using (ResourceNode root = NodeFactory.FromFile(null, file.FullName)) {
-									root.FindChild("MiscData[140]", false).ReplaceRaw(info140source.Address, info140source.Length);
-									root.Export(file.Name);
-									filesCreated.Add(file.Name);
+						if (!changed) {
+							filesSkipped.Add(o.Info.Name);
+						} else {
+							info.Export(o.Info.Name);
+							filesCreated.Add(o.Info.Name);
+							destinations.Add(o.Info.Name, o.Info.FullName);
+
+							FileInfo[] other_files = new FileInfo[4];
+							string[] append = { "_boss_battle", "_corps", "_homerun", "_training" };
+							for (int i = 0; i < 4; i++) {
+								other_files[i] = new FileInfo(info_filename.Replace("info.pac", "info" + append[i] + ".pac"));
+							}
+							DataSource info140source = info140.OriginalSource;
+							foreach (FileInfo file in other_files) {
+								Console.WriteLine(file.FullName);
+								if (file.Exists) {
+									using (ResourceNode root = NodeFactory.FromFile(null, file.FullName)) {
+										root.FindChild("MiscData[140]", false).ReplaceRaw(info140source.Address, info140source.Length);
+										root.Export(file.Name);
+										filesCreated.Add(file.Name);
+										destinations.Add(file.Name, file.FullName);
+									}
 								}
 							}
 						}
@@ -65,6 +74,7 @@ namespace TransferSSS {
 							fromBrres_common5.Merge();
 							fromBrres_common5.Export("common5.pac");
 							filesCreated.Add("common5.pac");
+							destinations.Add("common5.pac", o.Common5.FullName);
 						}
 						if (o.Mu_menumain != null) {
 							ResourceNode fromBrres_mu_menumain = NodeFactory.FromFile(null, o.Mu_menumain.FullName);
@@ -76,6 +86,7 @@ namespace TransferSSS {
 							fromBrres_mu_menumain.Merge();
 							fromBrres_mu_menumain.Export("mu_menumain.pac");
 							filesCreated.Add("mu_menumain.pac");
+							destinations.Add("mu_menumain.pac", o.Mu_menumain.FullName);
 						}
 					}
 				} catch (KeyNotFoundException) {
@@ -87,11 +98,34 @@ namespace TransferSSS {
 				foreach (string s in filesCreated) {
 					msg += s + "\n";
 				}
-				msg += "Remember to copy the new files to the correct locations.";
+				foreach (string s in filesSkipped) {
+					msg += "(Skipped " + s + ")\n";
+				}
+//				msg += "Remember to copy the new files to the correct locations.";
 				if (filesCreated.Count == 0) {
 					msg = "No files copied.";
 				}
-				MessageBox.Show(msg, "Finished");
+//				MessageBox.Show(msg, "Finished");
+
+				DialogResult result = MessageBox.Show(msg+"\nMove the files to their correct locations now?", "", MessageBoxButtons.YesNo);
+				if (result == DialogResult.Yes) {
+					string filesCopied = "";
+					foreach (string s in filesCreated) {
+						try {
+							string dest = destinations[s];
+							filesCopied += s + " --> " + dest;
+							if (new FileInfo(dest).Exists) {
+								File.Move(dest, dest+".bak");
+								filesCopied += " (backed up original first)";
+							}
+							File.Move(s, dest);
+							filesCopied += "\n";
+						} catch (KeyNotFoundException) {
+							MessageBox.Show("Error: did not remember where to move " + s + " to.");
+						}
+					}
+					MessageBox.Show(filesCopied);
+				}
 			}
 		}
 	}
