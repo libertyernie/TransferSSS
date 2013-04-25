@@ -139,6 +139,26 @@ namespace TransferSSS {
 
 			Common5 = Mu_menumain = RSBE01 = Info = null;
 
+			#region Check for inconsistent files
+			{
+				string[] lookfor = { "./", "/" };
+				foreach (string p in lookfor) {
+					if (new FileInfo(p+"data/gecko/codes/RSBE01.gct").Exists && new FileInfo(p+"codes/RSBE01.gct").Exists) {
+						MessageBox.Show("Warning: you have two RSBE01.gct files\n(in "+p+"codes and "+p+"data/gecko/codes).\nGecko OS will ignore the first in favor of the second.\nThis may or may not be what you wanted.", "Warning");
+						break;
+					}
+				}
+				foreach (string p in lookfor) {
+					if (new FileInfo(p + "private/wii/app/RSBE/st/st_080805_0933.bin").Exists) {
+						if (!new FileInfo(p + "boot.elf").Exists) {
+							MessageBox.Show("Warning: the Stack Smash hack is installed (st_080805_0933.bin) but there is no boot.elf in the root directory. This will cause the game to crash when loading through Stage Builder.", "Warning");
+							break;
+						}
+					}
+				}
+			}
+			#endregion
+
 			#region Scan for files in current folder and root of current drive
 			string[] common5_folders = {
 								"private/wii/app/RSBE/pf/system", "brawlmods/textures/system",
