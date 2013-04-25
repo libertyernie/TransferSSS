@@ -10,8 +10,8 @@ namespace TransferSSS {
 	class GCT {
 		public static void add(string gct_file, string txt_file, string output_file) {
 			FileStream gct = new FileStream(gct_file, FileMode.Open, FileAccess.Read);
-			byte[] gct_data = new byte[gct.Length - 16];
-			gct.Seek(8, SeekOrigin.Begin); // DON'T skip eight-byte GCT header
+			byte[] gct_data = new byte[gct.Length - 8];
+			//gct.Seek(8, SeekOrigin.Begin); // DON'T skip eight-byte GCT header
 			gct.Read(gct_data, 0, gct_data.Length); // DO skip eight-byte GCT footer
 			gct.Close();
 
