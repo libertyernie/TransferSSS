@@ -115,8 +115,12 @@ namespace TransferSSS {
 							string dest = destinations[s];
 							filesCopied += s + " --> " + dest;
 							if (new FileInfo(dest).Exists) {
-								File.Move(dest, dest+".bak");
-								filesCopied += " (backed up original first)";
+								if (new FileInfo(dest + ".bak").Exists) {
+									filesCopied += " (did not back up - older backup already exists)";
+								} else {
+									File.Move(dest, dest + ".bak");
+									filesCopied += " (backed up original first)";
+								}
 							}
 							File.Move(s, dest);
 							filesCopied += "\n";
