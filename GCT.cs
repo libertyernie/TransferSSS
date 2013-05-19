@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TransferSSS {
 	class GCT {
-		public static void add(string gct_file, string txt_file, string output_file) {
+		public static bool add(string gct_file, string txt_file, string output_file) {
 			FileStream gct = new FileStream(gct_file, FileMode.Open, FileAccess.Read);
 			byte[] gct_data = new byte[gct.Length - 8];
 			//gct.Seek(8, SeekOrigin.Begin); // DON'T skip eight-byte GCT header
@@ -54,6 +54,7 @@ namespace TransferSSS {
 
 			if (first_index_of_subsequence(gct_data, txt_data) > 0) {
 				MessageBox.Show("The codes from Codeset.txt are already present in the GCT file, in the same order. No new GCT file will be created.");
+				return false;
 			} else {
 				FileStream gct_out = new FileStream(output_file, FileMode.Create, FileAccess.Write);
 				gct_out.Write(gct_data, 0, gct_data.Length);
@@ -61,6 +62,7 @@ namespace TransferSSS {
 				byte[] footer = { 0xf0, 0, 0, 0, 0, 0, 0, 0 };
 				gct_out.Write(footer, 0, footer.Length);
 				gct_out.Close();
+				return true;
 			}
 		}
 

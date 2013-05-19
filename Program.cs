@@ -16,9 +16,10 @@ namespace TransferSSS {
 
 				#region Add to GCT
 				if (o.RSBE01 != null) {
-					GCT.add(o.RSBE01.FullName, "Codeset.txt", "RSBE01.gct");
-					filesCreated.Add("RSBE01.gct");
-					destinations.Add("RSBE01.gct", o.RSBE01.FullName);
+					if (GCT.add(o.RSBE01.FullName, "Codeset.txt", "RSBE01.gct")) {
+						filesCreated.Add("RSBE01.gct");
+						destinations.Add("RSBE01.gct", o.RSBE01.FullName);
+					}
 				}
 				#endregion
 
@@ -63,7 +64,7 @@ namespace TransferSSS {
 
 				#region Replace MiscData[80], insert custom icons if any, resize icons if needed
 				try {
-					if (o.Copy_std || o.Copy_exp) {
+					if (o.Common5 != null || o.Mu_menumain != null) {
 						ResourceNode toBrres_node = NodeFactory.FromFile(null, "MiscData[80].brres");
 
 						if (o.Common5 != null) {
