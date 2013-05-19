@@ -95,6 +95,8 @@ namespace TransferSSS {
 				}
 				#endregion
 
+				MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+
 				string msg = "Files created:\n";
 				foreach (string s in filesCreated) {
 					msg += s + "\n";
@@ -102,13 +104,13 @@ namespace TransferSSS {
 				foreach (string s in filesSkipped) {
 					msg += "(Skipped " + s + ")\n";
 				}
-//				msg += "Remember to copy the new files to the correct locations.";
 				if (filesCreated.Count == 0) {
 					msg = "No files copied.";
+					buttons = MessageBoxButtons.OK;
+				} else {
+					msg += "\nMove the files to their correct locations now?";
 				}
-//				MessageBox.Show(msg, "Finished");
-
-				DialogResult result = MessageBox.Show(msg+"\nMove the files to their correct locations now?", "", MessageBoxButtons.YesNo);
+				DialogResult result = MessageBox.Show(msg, "", buttons);
 				if (result == DialogResult.Yes) {
 					string filesCopied = "";
 					foreach (string s in filesCreated) {
@@ -117,6 +119,7 @@ namespace TransferSSS {
 							filesCopied += s + " --> " + dest;
 							if (new FileInfo(dest).Exists) {
 								if (new FileInfo(dest + ".bak").Exists) {
+									File.Delete(dest);
 									filesCopied += " (did not back up - older backup already exists)";
 								} else {
 									File.Move(dest, dest + ".bak");
