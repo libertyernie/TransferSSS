@@ -8,6 +8,15 @@ namespace TransferSSS {
 	class Program {
 		[STAThread]
 		static void Main(string[] args) {
+			try {
+				NodeFactory.FromFile(null, "");
+			} catch (ArgumentException) {
+				// expected behavior
+			} catch (TypeInitializationException) {
+				MessageBox.Show("TypeInitializationException thrown! Your version of BrawlLib may require OpenTK.dll.");
+				return;
+			}
+
 			Options o = new Options();
 			if (o.ShowDialog() == DialogResult.OK) {
 				List<string> filesCreated = new List<string>();
