@@ -41,10 +41,12 @@ namespace TransferSSS {
 						using (MSBinNode custom140 = NodeFactory.FromFile(null, "MiscData[140].msbin") as MSBinNode) {
 //							changed = 
 							SongTitles.copy(custom140, info140);
+							info140.SignalPropertyChange();
 						}
 						if (!changed) {
 							filesSkipped.Add(o.Info.Name);
 						} else {
+							info140.Export("test.msbin");
 							info.Export(o.Info.Name);
 							filesCreated.Add(o.Info.Name);
 							destinations.Add(o.Info.Name, o.Info.FullName);
